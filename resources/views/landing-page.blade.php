@@ -46,14 +46,14 @@
             <div class="collapse navbar-collapse " id="navbarSupportedContent" style="font-family: Open Sans;">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <form class="container-fluid justify-content-end">
-                            <button class="btn btn-outline-primary btn-sm" type="button" style="width: 100px; font-weight:700">MASUK</button>
-                        </form>
+                        <a class="container-fluid justify-content-end">
+                            <button class="btn btn-outline-primary btn-sm" type="button" style="width: 100px; font-weight:700" data-bs-toggle="modal" data-bs-target="#modal-login">MASUK</button>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <form class="container-fluid justify-content-end">
+                        <a class="container-fluid justify-content-end" href="#section2">
                             <button class="btn btn-primary btn-sm" type="button" style="width: 100px; font-weight:700">DAFTAR</button>
-                        </form>
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -88,7 +88,7 @@
                             <a style="float: right;"><img src="assets/img/spl.png" alt=""></a>
                             <p class="card-text" style="width: 35rem; font-size:18px; margin-bottom: 1rem;">Tingkatkan penjualan produk anda dengan bergabung dalam
                                 bisnis dropshipping sebagai penyuplai barang.</p>
-                            <a href="#" class="btn btn-primary" style="font-weight: 600; font-size:18px; padding-left:2rem; padding-right:2rem;">
+                            <a onclick="setRole1()" id="buttonSpl" href="/register" class="btn btn-primary" style="font-weight: 600; font-size:18px; padding-left:2rem; padding-right:2rem;">
                                 Daftar
                                 <i class="fa fa-angle-right" aria-hidden="true" style=" margin-left:0.5rem;"></i>
                             </a>
@@ -104,7 +104,7 @@
                             <a style="float: right;"><img src="assets/img/drp.png" alt=""></a>
                             <p class="card-text" style="width: 35rem; font-size:18px; margin-bottom: 1rem;">Mulai bisnis anda dengan mudah tanpa harus memiliki modal.
                                 Cari produk produk untuk dijual kembali disini, tanpa perlu stok barang.</p>
-                            <a href="#" class="btn btn-primary" style="font-weight: 600; font-size:18px; padding-left:2rem; padding-right:2rem;">
+                            <a onclick="setRole2()" id="buttonDrp" href="/register" class="btn btn-primary" style="font-weight: 600; font-size:18px; padding-left:2rem; padding-right:2rem;">
                                 Daftar
                                 <i class="fa fa-angle-right" aria-hidden="true" style=" margin-left:0.5rem;"></i>
                             </a>
@@ -114,6 +114,45 @@
             </div>
         </div>
     </div>
+    <!-- Modal LOGIN -->
+    <div class="modal fade" id="modal-login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-md modal-dialog modal-dialog-centered">
+            <div class="modal-content px-5 py-3">
+                <form>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel" style="width: 15rem;">Login</h5>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3 ">
+                            <label for="exampleInputEmail1" class="form-label">Alamat Email</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        </div>
+                        <div class="">
+                            <label for="exampleInputPassword1" class="form-label">Kata Sandi</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1">
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-center">
+                        <button type="submit" class="btn btn-primary">Masuk</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        var roleOption = "none";
+
+        function setRole1() {
+            roleOption = "supplier"
+            sessionStorage.setItem("roleOption", roleOption);
+
+        }
+
+        function setRole2() {
+            roleOption = "dropshipper"
+            sessionStorage.setItem("roleOption", roleOption);
+        }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 </body>
