@@ -20,3 +20,33 @@ Route::get('/', function () {
 Route::get('/register', function () {
     return view('Register-page');
 });
+
+Route::get('/dashboard', function () {
+    return view('Dashboard-page', [
+        "title" => "Dashboard"
+    ]);
+});
+
+Route::get('/produk', function () {
+    return view('Produk-page', [
+        "title" => "Produk"
+    ]);
+});
+
+Route::get('/transaksi', function () {
+    return view('Transaksi-page', [
+        "title" => "Transaksi"
+    ]);
+});
+
+Route::get('/detail-transaksi', function () {
+    return view('DetailTransaksi-page', [
+        "title" => "Detail Transaksi"
+    ]);
+});
+
+Route::get('/profile', function () {
+    return view('Profile-page', [
+        "title" => "Profile"
+    ]);
+});

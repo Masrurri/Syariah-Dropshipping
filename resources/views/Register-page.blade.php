@@ -30,6 +30,7 @@
         nav {
             background: #FFFFFF;
             box-shadow: 0px 0px 4px 2px rgba(0, 89, 183, 0.16);
+            height: 5rem;
         }
 
         label {
