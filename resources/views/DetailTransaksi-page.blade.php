@@ -1,11 +1,7 @@
 @extends('Main-page')
 
 @section('container')
-    <div class="container">
-        <a class="btnBack" href="/transaksi">
-            <i class="fa fa-angle-left" aria-hidden="true" style=" margin-right:0.5rem;"></i>
-            Kembali
-        </a>
+    <div class="container mt-1">
         <div class="row ">
             <div class="col cards mt-4" style="padding: 2rem 2rem">
                 <span class="cHead ps-2">Detail Transaksi</span>
@@ -28,12 +24,20 @@
                             <input type="text" class="form-control-sm form-control-plaintext ps-2" readonly id="tgl-order" value="17/03/2022 18:37 WIB">
                         </div>
                         <div class="col-2">
-                            <label id="total-harga-label" for="total-harga" class="form-label ps-2">Total Harga</label>
-                            <input type="text" class="form-control-sm form-control-plaintext ps-2" readonly id="total-harga" value="Rp1500.000">
+                            <label id="keterangan-label" for="keterangan" class="form-label ps-2">Keterangan</label>
+                            <input type="text" class="form-control-sm form-control-plaintext ps-2" readonly id="keterangan" value="Warna Hitam">
                         </div>
                         <div class="col-2">
                             <label id="jumlah-label" for="jumlah" class="form-label ps-2">Jumlah</label>
                             <input type="text" class="form-control-sm form-control-plaintext ps-2" readonly id="jumlah" value="2">
+                        </div>
+                        <div class="col-2">
+                            <label id="ongkir-label" for="ongkir" class="form-label ps-2">Ongkir</label>
+                            <input type="text" class="form-control-sm form-control-plaintext ps-2" readonly id="ongkir" value="Rp11.000">
+                        </div>
+                        <div class="col-2">
+                            <label id="total-harga-label" for="total-harga" class="form-label ps-2">Total Harga</label>
+                            <input type="text" class="form-control-sm form-control-plaintext ps-2" readonly id="total-harga" value="Rp1500.000">
                         </div>
                     </div>
                     {{-- new line --}}
@@ -62,9 +66,13 @@
                             <label id="no-resi-pengiriman-label" for="no-resi-pengiriman" class="form-label ps-2">No Resi Pengiriman</label>
                             <input type="text" class="form-control form-control-sm ms-2" id="no-resi-pengiriman" value="" placeholder="Tambahkan Resi">
                         </div>
+                        <div class="col-2">
+                            <label id="kota-tujuan-label" for="kota-tujuan" class="form-label ps-2">Kota Tujuan</label>
+                            <input type="text" class="form-control-sm form-control-plaintext ps-2" readonly id="kota-tujuan" value="Yogyakarta">
+                        </div>
                         <div class="col-8">
-                            <label id="alamat-pengiriman-label" for="alamat-pengiriman" class="form-label ps-2">Alamat Pengiriman</label>
-                            <input type="text" class="form-control-sm form-control-plaintext ps-2" readonly id="alamat-pengiriman" value="Jalan Bandung Riau Indonesia No 32, RT 09 RW 08, Kode Pos 125100">
+                            <label id="alamat-tujuan-label" for="alamat-tujuan" class="form-label ps-2">Alamat Tujuan</label>
+                            <input type="text" class="form-control-sm form-control-plaintext ps-2" readonly id="alamat-tujuan" value="Jalan Bandung Riau Indonesia No 32, RT 09 RW 08, Kode Pos 125100">
                         </div>
                     </div>
                     {{-- new line --}}
@@ -126,10 +134,9 @@
                     {{-- new line --}}
                     <div class="row mt-2" style="font-weight: 600">
                         <div class="col-4 ms-2 mt-4">
-                            <button type="button" class="btn btn-sm btn-scn" style="margin-right: 1rem;">Batal</button>
+                            <a href="/transaksi" type="button" class="btn btn-sm btn-scn" style="margin-right: 1rem;">Batal</a>
                             <button type="button" class="btn btn-sm btn-prm" >Simpan</button>
                         </div>
-                        
                     </div>
                     
                 </form>

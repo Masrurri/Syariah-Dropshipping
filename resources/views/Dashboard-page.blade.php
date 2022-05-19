@@ -16,9 +16,10 @@
                         <div class="cBody">+6219903244512</div>
                     </div>
                     <div class="col" style="padding: 0.8rem 0rem;">
-                        <a class="txHover" href="/profile">Edit</a>
+                        <a class="txHover" href="/edit-toko">Edit</a>
                     </div>
                 </div>
+                {{-- <button class="btn btn-lg btn-scn w-75 m-5">Lengkapi Identitas</button> --}}
           </div>
           <div class="col cards">
                 <div class="row">

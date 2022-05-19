@@ -31,14 +31,14 @@
                     <div class="row" style="display: block; height:3.6rem; z-index:1;">
                         <div class="col-3 position-fixed" style="z-index:1;">
                           <select class="form-select form-select-sm" aria-label="Default select example">
-                            <option selected>Terbaru</option>
-                            <option value="1">Pakaian</option>
+                            <option selected>Semua Produk</option>
+                            <option value="1">Terlaris</option>
                             <option value="2">Otomotif</option>
                             <option value="3">Alat Dapur</option>
                           </select>
                         </div>
                         <div class="col-8 position-fixed">
-                            <button type="button" class="btn btn-sm btn-scn" style="width:10rem; float:right" data-bs-toggle="modal" data-bs-target="#tambahProdukModal">Tambah Produk</button>
+                            <button type="button" class="btn btn-sm btn-scn" style="width:10rem; float:right">Tambah Produk</button>
                         </div>
                     </div>
                     <div class="row row-cols-sm-4 g-3" style="overflow-y: scroll; max-height:29rem">
@@ -50,8 +50,7 @@
                                 <span class="card-text" style="font-size: 12px; font-weight:700">Harga: Rp35.000</span><br>
                                 <span class="card-text m-0" style="font-size: 12px; font-weight:700">Saran Penjualan: Rp40.000</span><br>
                                 <span class="card-text m-0" style="font-size: 12px; font-weight:600">Stok: 50</span><br>
-                                <a href="/detail-produk" class="btn btn-sm btn-scn my-3" style="width: 4rem">Detail</a>
-                                <a href="/checkout" class="btn btn-sm btn-prm mx-2">Beli</a>
+                                <a href="#" class="btn btn-sm btn-primary my-3">Detail</a>
                               </div>
                             </div>
                         </div>
@@ -200,71 +199,9 @@
             </div>
         </div>
     </div>
-    <!-- Modal -->
-    <div class="modal fade" id="tambahProdukModal" tabindex="-1" aria-labelledby="editProdukModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content px-3 py-2">
-          <div class="modal-header">
-          <h5 class="modal-title" id="editProdukModalLabel" style="font-weight:600">Tambah Produk</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body container">
-              <div class="row">
-                  <div class="col">
-                      <label id="nama-barang-label" for="nama-barang" class="form-label" style="font-weight:600">Nama Barang</label>
-                      <input type="text" class="form-control form-control-sm" id="nama-barang" value="">
-                  </div>
-              </div>
-              <div class="row mt-2">
-                  <div class="col-6">
-                      <label id="nama-barang-label" for="kategori" class="form-label" style="font-weight:600">Kategori</label>
-                      <select class="form-select form-select-sm" id="kategori" aria-label=".form-select-sm example">
-                          <option selected>Alat Tulis</option>
-                          <option value="1">Pakaian</option>
-                          <option value="2">Makanan</option>
-                          <option value="3">Otomotif</option>
-                      </select>
-                  </div>
-                  <div class="col-6">
-                      <label id="nama-barang-label" for="gambar-utama" class="form-label" style="font-weight:600">Gambar Utama</label>
-                      <input class="form-control form-control-sm" id="gbrUpload" type="file">
-                  </div>
-              </div>
-              <div class="row mt-2">
-                  <div class="col-12">
-                      <label for="deskripsi" class="form-label" style="font-weight:600">Deskripsi</label>
-                      <textarea class="form-control form-control-sm" id="deskripsi" rows="3" style="white-space: pre-line"></textarea>
-                  </div>
-              </div>
-              <div class="row mt-2">
-                  <div class="col-6">
-                      <label id="harga-label" for="harga" class="form-label" style="font-weight:600">Harga</label>
-                      <input type="text" class="form-control form-control-sm" id="harga" value="">
-                  </div>
-                  <div class="col-6">
-                      <label id="stok-barang-label" for="stok-barang" class="form-label" style="font-weight:600">Stok Barang</label>
-                      <input type="text" class="form-control form-control-sm" id="stok-barang" value="">
-                  </div>
-              </div>
-              <div class="row mt-2">
-                  <div class="col-6">
-                      <label id="saran-harga-label" for="saran-harga" class="form-label" style="font-weight:600">Saran Harga Jual</label>
-                      <input type="text" class="form-control form-control-sm" id="saran-harga" value="">
-                  </div>
-                  <div class="col-6">
-                      <label id="berat-label" for="berat" class="form-label" style="font-weight:600">Berat</label>
-                      <input type="text" class="form-control form-control-sm" id="berat" value="">
-                  </div>
-              </div>
-          </div>
-          <div class="modal-footer">
-              <button type="button" class="btn btn-sm btn-scn" style="margin-right: 1rem;" data-bs-dismiss="modal">Batal</button>
-              <button type="button" class="btn btn-sm btn-prm" >Tambahkan</button>
-          </div>
-      </div>
-      </div>
-    </div>
+    <div class="row">
 
+    </div>
 </div>
 
 

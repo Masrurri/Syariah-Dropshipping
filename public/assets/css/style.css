@@ -10,10 +10,53 @@ nav {
 .cards {
     width: 55rem;
     padding: 1rem 3rem;
-    box-shadow: 0px 0px 4px 2px rgba(0, 89, 183, 0.12);
-    border-radius: 10px;
+    box-shadow: 0px 0px 4px 2px rgba(0, 88, 183, 0.048);
+    border-radius: 8px;
     margin-top: 1rem;
+    border: 0.1px solid #0569d32c;
 }
+.cardProduk {
+    width: 55rem;
+    padding: 0;
+    border-radius: 8px;
+    margin-top: 1rem;
+    margin-right: 1rem;
+    border: 1px solid rgb(219, 219, 219);
+}
+.cardToko{
+    width: 18rem;
+    height: 10rem;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    margin-right: 1rem;
+    
+    background-color: #ebf3ff;
+    color: #056AD3;
+    border: 1px solid #056AD3;
+
+    outline:0;
+    display:block;
+    text-decoration:none;
+    position:relative;
+    top:0;
+    left:0;
+
+    transition: all 100ms ease-in;
+    cursor: pointer;
+}
+.cardToko:hover{
+    border: 1px solid #056AD3;
+    top:-4px;
+    right:-4px;
+    box-shadow:-5px 5px  #056AD3;
+}
+
+.infoToko{
+    font-size: 12px;
+    width:15rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
 a{
     text-decoration: none !important;
 }
@@ -145,4 +188,15 @@ td {
 .btn-scn:hover {
     border: 1px solid #056AD3;
     color: #056AD3;
+}
+
+.btn-red {
+    background-color: #FFE8EF;
+    width: 6rem;
+    color: #DF476D;
+    font-weight: 600;
+}
+.btn-red:hover {
+    border: 1px solid #DF476D;
+    color: #DF476D;
 }

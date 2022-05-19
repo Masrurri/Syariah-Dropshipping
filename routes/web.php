@@ -50,3 +50,21 @@ Route::get('/profile', function () {
         "title" => "Profile"
     ]);
 });
+
+Route::get('/detail-produk', function () {
+    return view('DetailProduk-page', [
+        "title" => "Detail Produk"
+    ]);
+});
+
+Route::get('/edit-toko', function () {
+    return view('EditToko-page', [
+        "title" => "Edit Toko"
+    ]);
+});
+
+Route::get('/checkout', function () {
+    return view('Checkout-page', [
+        "title" => "Checkout"
+    ]);
+});
