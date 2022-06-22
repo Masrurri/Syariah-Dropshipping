@@ -106,50 +106,80 @@
                 <div class="col-auto">
                     <div class="card">
                         <div class="card-body">
-                            <form class="row g-3">
-                                <div class="col-md-6">
+                            <form class="row g-3" action="/register" method="post">
+                                @csrf
+                                <div class="col-md-6 form-group">
                                     <label for="sebagai" class="form-label">Daftar Sebagai</label>
-                                    <select class="form-select" aria-label="Default select example" id="sebagai" style="color:#056AD3;" onchange="role()">
+                                    <select class="form-select @error('sebagai') is-invalid @enderror" aria-label="Default select example" name="sebagai" id="sebagai" style="color:#056AD3;" onchange="role()" required>
                                         <option value="supplier">Supplier</option>
                                         <option value="dropshipper">Dropshipper</option>
                                     </select>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-6 form-group">
                                     <label id="nama-toko-label" for="nama-toko" class="form-label">Nama Toko</label>
-                                    <input type="text" class="form-control" id="nama-toko">
+                                    <input type="text" class="form-control @error('nama_toko') is-invalid @enderror" name="nama_toko" id="nama-toko" value="{{ old('nama_toko') }}">
+                                    @error('nama_toko')
+                                    <div id="nama-toko-feedback" class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-6 form-group">
                                     <label for="nama-lengkap" class="form-label">Nama Lengkap</label>
-                                    <input type="text" class="form-control" id="nama-lengkap">
+                                    <input type="text" class="form-control @error('nama_lengkap') is-invalid @enderror" name="nama_lengkap" id="nama-lengkap" required value="{{ old('nama_lengkap') }}">
+                                    @error('nama_lengkap')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-6 form-group">
                                     <label for="no-handphone" class="form-label">Nomor Handphone</label>
-                                    <input type="text" class="form-control" id="no-handphone">
+                                    <input type="text" class="form-control @error('no_handphone') is-invalid @enderror" name="no_handphone" id="no-handphone" required value="{{ old('no_handphone') }}">
+                                    @error('no_handphone')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
                                 </div>
-                                <div class="col-6">
+                                <div class="col-6 form-group">
                                     <label for="input-email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="input-email">
+                                    <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="input-email" required value="{{ old('email') }}">
+                                    @error('email')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
                                 </div>
-                                <div class="col-6">
+                                <div class="col-6 form-group">
                                     <label for="input-password" class="form-label">Kata Sandi</label>
-                                    <input type="password" class="form-control" id="input-password">
+                                    <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="input-password" placeholder="min. 8 characters" required>
+                                    @error('password')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
                                 </div>
-                                <div class="col-12">
+                                <div class="col-12 form-group">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="ketentuan">
+                                        <input class="form-check-input @error('ketentuan_acc') is-invalid @enderror" type="checkbox" name="ketentuan_acc" id="ketentuan" required>
                                         <label class="form-check-label" for="gridCheck">
                                             <span style="font-weight: 400;">Saya telah membaca </span>
                                             <button type="button" class="modal1" data-bs-toggle="modal" data-bs-target="#modal-register">
                                                 Ketentuan Wakalah
                                             </button>
                                         </label>
+                                        @error('ketentuan_acc')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <button type="submit" class="btn btn-primary" style="font-weight: 600; width:10rem;">Daftar</button>
                                 </div>
                             </form>
-
                         </div>
                     </div>
                 </div>
@@ -161,8 +191,8 @@
         <div class="modal-lg modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content px-5 py-3">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel" style="width: 15rem;">Ketentuan Dropshipping
-                        Syariah Wakalah</h5>
+                    <h5 class="modal-title" id="exampleModalLabel" style="width: 19rem;">Ketentuan Dropshipping Syariah 
+                        Wakalah</h5>
                 </div>
                 <div class="modal-body">
                     <ol>
@@ -210,9 +240,12 @@
             if (select.value == "supplier") {
                 document.getElementById("nama-toko").style.display = "block";
                 document.getElementById("nama-toko-label").style.display = "block";
+                $("#nama-toko").attr('required',true);
             } else {
+                $("#nama-toko").attr('required',false);
                 document.getElementById("nama-toko").style.display = "none";
                 document.getElementById("nama-toko-label").style.display = "none";
+                document.getElementById("nama-toko-feedback").style.display = "none";
             }
         }
 
@@ -220,9 +253,15 @@
             var select = document.getElementById('sebagai');
             var option = select.options[select.selectedIndex];
             if (option.value == "supplier") {
+                var roleOption = "supplier"
+                sessionStorage.setItem("roleOption", roleOption);
                 document.getElementById("nama-toko").style.display = "block";
                 document.getElementById("nama-toko-label").style.display = "block";
+                $("#nama-toko").attr('required',true);
             } else {
+                var roleOption = "dropshipper"
+                sessionStorage.setItem("roleOption", roleOption);
+                $("#nama-toko").attr('required',false);
                 document.getElementById("nama-toko").style.display = "none";
                 document.getElementById("nama-toko-label").style.display = "none";
             }
@@ -232,6 +271,7 @@
             document.getElementById("ketentuan").checked = true;
         }
     </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 </body>

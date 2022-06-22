@@ -2,13 +2,25 @@
 
 @section('container')
     <div class="container">
+        @if(session()->has('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
+        @if(session()->has('loginError'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ session('loginError') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
         <div class="row">
             <div class="col-2">
-                <a href="/produk"><i class="fa fa-chevron-left me-2" aria-hidden="true"></i>Kembali</a> 
+                <a href="@if(auth()->user()->role == "supplier")/myproduk @else /produk @endif"><i class="fa fa-chevron-left me-2" aria-hidden="true"></i>Kembali</a> 
             </div>
         </div>
         <div class="row ">
-            <div class="col cards p-5">
+            <div class="col cards p-5 mb-5">
                 <div class="row ">
                     <div class="col-3">
                         <div class="row justify-content-center">
@@ -19,15 +31,15 @@
                                   <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
                                 </div>
                                 <div class="carousel-inner">
-                                  <div class="carousel-item active">
-                                    <img src="assets/img/prdk.png" class="d-block w-100" alt="...">
-                                  </div>
-                                  <div class="carousel-item">
-                                    <img src="assets/img/prdk.png" class="d-block w-100" alt="...">
-                                  </div>
-                                  <div class="carousel-item">
-                                    <img src="assets/img/prdk.png" class="d-block w-100" alt="...">
-                                  </div>
+                                    <div class="carousel-item active">
+                                        <img src="{{url($produk->gambar_utama)}}" class="d-block w-100" alt="...">
+                                    </div>
+                                    
+                                    @foreach ($assets as $key => $asset)
+                                        <div class="carousel-item">
+                                            <img src="{{url($asset->url)}}" class="d-block w-100" alt="...">
+                                        </div>
+                                    @endforeach
                                 </div>
                                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -45,149 +57,88 @@
                         </div>
                         <!-- Modal -->
                         <div class="modal fade" id="assetModal" tabindex="-1" aria-labelledby="assetModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                                <div class="modal-content">
+                            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                                <div class="modal-content px-3">
                                     
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="assetModalLabel">Asset Gambar</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-
                                 <div class="modal-body container">
                                     <div class="row mb-3">
-                                        <div class="col-4">
-                                            <img src="assets/img/prdk.png" alt="..." style="width: 100%">
-                                        </div>
-                                        <div class="col-4">
-                                            <img src="assets/img/prdk.png" alt="..." style="width: 100%">
-                                        </div>
-                                        <div class="col-4">
-                                            <img src="assets/img/prdk.png" alt="..." style="width: 100%">
-                                        </div>
+                                        @foreach ($assets as $key => $asset)
+                                            <div class="col-4 p-2">
+                                                <img src="{{url($asset->url)}}" alt="..." style="width: 100%">
+                                            </div>
+                                        @endforeach
                                     </div>
-                                    <div class="row">
-                                        <div class="col-4">
-                                            <img src="assets/img/prdk.png" alt="..." style="width: 100%">
-                                        </div>
-                                        <div class="col-4">
-                                            <img src="assets/img/prdk.png" alt="..." style="width: 100%">
-                                        </div>
-                                        <div class="col-4">
-                                            <img src="assets/img/prdk.png" alt="..." style="width: 100%">
-                                        </div>
-                                    </div>
-                                    <div class="row mt-3">
-                                        <div class="col-8">
-                                            <input class="form-control form-control-sm" id="assetUpload" type="file" multiple>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
 
                                 <div class="modal-footer">
-                                    <button href="" type="button" class="btn btn-sm btn-red" style="width: 8rem">Hapus Semua</button>
-                                    <button href="" type="button" class="btn btn-sm btn-prm" style="">Download</button>
-                                </div>
 
+                                </div>
                                 </div>
                             </div>
                         </div>
                         
                     </div>
-                    <div class="col-9 ps-5" style="color: black">
-                        <span class="card-text row" style="font-size: 16px;">Produk ID: A21DHJKKL19</span>
-                        <span class="card-text row mt-3" style="font-size: 18px;">Cutting Mat A3 JOYKO/Alas Potong A3/Cutting Mad A3/Pemotong Kertas A3</span>
-                        <span class="card-text row mt-2" style="font-size: 16px; font-weight:700">Harga: Rp35.000</span>
-                        <span class="card-text row" style="font-size: 16px; font-weight:700">Saran Penjualan: Rp40.000</span>
-                        <span class="card-text row" style="font-size: 16px; font-weight:600">Stok: 50</span>
-                        <span class="card-text row" style="font-size: 16px; font-weight:600">Berat: 1 Kg</span>
-                        <span class="card-text row mt-2" style="font-size: 16px; font-weight:600">Dikirim dari: Jakarta</span>
-                        <span class="card-text row" style="font-size: 16px; font-weight:600">Supplier: Toko Jaya Abadi</span>
-                        <span class="card-text row mt-2" style="font-size: 16px; white-space: pre-line">Cutting Mat / Alas Potong Joyko CM-A3
-                            >Harga yang tertera adalah 1pcs
-                            >Ukuran Produk : Panjang 45 cm x Lebar 30 cm ( A3 )
-                            >Warna Produk : Hijau
-                            >Digunakan sebagai alas untuk memotong kertas, karton menggunakan Cutter
-                        </span>
-                        <span class="row mt-4">
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-sm btn-scn" style="margin-right: 1rem;" data-bs-toggle="modal" data-bs-target="#editProdukModal">Edit</button>
-                            
-                            <button type="button" class="btn btn-sm btn-red" style="margin-right: 1rem;">Hapus</button>
-                        </span>
-                        <!-- Modal -->
-                        <div class="modal fade" id="editProdukModal" tabindex="-1" aria-labelledby="editProdukModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-                            <div class="modal-content px-3 py-2">
-                                <div class="modal-header">
-                                <h5 class="modal-title" id="editProdukModalLabel" style="font-weight:600">Edit Produk</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body container">
-                                    <div class="row">
-                                        <div class="col">
-                                            <label id="nama-barang-label" for="nama-barang" class="form-label" style="font-weight:600">Nama Barang</label>
-                                            <input type="text" class="form-control form-control-sm" id="nama-barang" value="Cutting Mat A3 JOYKO/Alas Potong A3/Cutting Mad A3/Pemotong Kertas A3">
-                                        </div>
-                                    </div>
-                                    <div class="row mt-2">
-                                        <div class="col-6">
-                                            <label id="nama-barang-label" for="kategori" class="form-label" style="font-weight:600">Kategori</label>
-                                            <select class="form-select form-select-sm" id="kategori" aria-label=".form-select-sm example">
-                                                <option selected>Alat Tulis</option>
-                                                <option value="1">Pakaian</option>
-                                                <option value="2">Makanan</option>
-                                                <option value="3">Otomotif</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-6">
-                                            <label id="nama-barang-label" for="gambar-utama" class="form-label" style="font-weight:600">Gambar Utama</label>
-                                            <input class="form-control form-control-sm" id="gbrUpload" type="file">
-                                        </div>
-                                    </div>
-                                    <div class="row mt-2">
-                                        <div class="col-12">
-                                            <label for="deskripsi" class="form-label" style="font-weight:600">Deskripsi</label>
-                                            <textarea class="form-control form-control-sm" id="deskripsi" rows="3" style="white-space: pre-line">Cutting Mat / Alas Potong Joyko CM-A3
->Harga yang tertera adalah 1pcs
->Ukuran Produk : Panjang 45 cm x Lebar 30 cm ( A3 )
->Warna Produk : Hijau
->Digunakan sebagai alas untuk memotong kertas, karton menggunakan Cutter
-                                            </textarea>
-                                        </div>
-                                    </div>
-                                    <div class="row mt-2">
-                                        <div class="col-6">
-                                            <label id="harga-label" for="harga" class="form-label" style="font-weight:600">Harga</label>
-                                            <input type="text" class="form-control form-control-sm" id="harga" value="Rp35.000.00">
-                                        </div>
-                                        <div class="col-6">
-                                            <label id="stok-barang-label" for="stok-barang" class="form-label" style="font-weight:600">Stok Barang</label>
-                                            <input type="text" class="form-control form-control-sm" id="stok-barang" value="50">
-                                        </div>
-                                    </div>
-                                    <div class="row mt-2">
-                                        <div class="col-6">
-                                            <label id="saran-harga-label" for="saran-harga" class="form-label" style="font-weight:600">Saran Harga Jual</label>
-                                            <input type="text" class="form-control form-control-sm" id="saran-harga" value="Rp40.000.00">
-                                        </div>
-                                        <div class="col-6">
-                                            <label id="berat-label" for="berat" class="form-label" style="font-weight:600">Berat</label>
-                                            <input type="text" class="form-control form-control-sm" id="berat" value="500 Gram">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-sm btn-scn" style="margin-right: 1rem;" data-bs-dismiss="modal">Batal</button>
-                                    <button type="button" class="btn btn-sm btn-prm" >Simpan</button>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
+                    <div class="col-9 ps-5 produkBody" style="color: black; overflow:scroll; max-height:55vh">
+                        <span class="card-text row" style="font-size: 14px; font-weight:600">Produk ID: {{$produk->id}}</span>
+                        <span class="card-text row" style="font-size: 22px; font-weight:600">{{$produk->nama_produk}}</span>
+                        <span class="card-text row mt-2" style="font-size: 24px; font-weight:700">Rp{{$produk->harga}}</span>
+                        <span class="card-text row mb-2" style="font-size: 16px; font-weight:600">Saran Penjualan: Rp{{$produk->saran_harga}}</span>
+                        
+                        <span class=" mt-2" style="font-size: 16px; font-weight:400">Stok: {{$produk->stok}}</span><br>
+                        <span class="" style="font-size: 16px; font-weight:400">Berat: {{$produk->berat}} Kg</span><br>
+                        <span class=" mt-2" style="font-size: 16px; font-weight:400">Dikirim dari <b>{{$produk->toko->kota}}</b> </span><br>
+                        <span class="mb-0" style="font-size: 16px; font-weight:400">Supplier <b>{{$produk->toko->nama_toko}}</b> </span>
+                        <div id="deskripsi" class="row mt-2" style="font-size: 16px; white-space: pre-line; overflow: hidden; max-height:8vh">{{$produk->deskripsi}}</div>
+                        <a onclick="detailShow()" class=" row mt-0" style="font-size: 13px; font-weight:700" type="button">Lihat Selengkapnya</a>
+                        
 
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-3">
+                        
+                        
+                    </div>
+                    <div class="col-9 ps-5">
+                        <span class="card-text row mt-3" style="margin-left:-1.5rem">
+                            @if(auth()->user()->role == "supplier")
+                                @if(auth()->user()->id == $produk->toko->supplier->user->id)
+                                    <form action="/delete-produk/{{$produk->id}}" method="post">
+                                        @method('delete')
+                                        @csrf
+                                        <button type="submit" onclick="return confirm('Apakah anda yakin ingin menghapus {{$produk->nama_produk}}')" class="btn btn-sm btn-red">Hapus</button>
+                                        <a href="/edit-produk/{{$produk->id}}" class="btn btn-sm btn-prm mx-2" style="width: 8rem">Edit Produk</a>
+                                    </form>
+                                @endif
+                            <!-- Button trigger modal -->
+                            @else
+                                <a href="/checkout/{{$produk->id}}" class="btn btn-sm btn-prm" style="margin-left: 0.8rem">Beli</a>
+                            @endif
+                        </span>
+
+                    </div>
+                </div>
+                
             </div>
+            
         </div>
 
     </div>
+    <script>
+        var a = document.getElementById("deskripsi");
+        function detailShow(){
+            if(a.style.overflow != null && a.style.maxHeight != null){ 
+                a.style.overflow = null;
+                a.style.maxHeight = null;
+            }else{
+                a.style.overflow = "hidden";
+                a.style.maxHeight = "8vh";
+            }      
+        }
+    </script>
 @endsection

@@ -18,9 +18,11 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'nama_lengkap',
         'email',
+        'no_handphone',
         'password',
+        'role'
     ];
 
     /**
@@ -33,12 +35,12 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public function supplier() {
+        return $this->hasOne(Supplier::class);
+    }
+
+    public function dropshipper()
+    {
+        return $this->hasOne(Dropshipper::class);
+    }
 }
