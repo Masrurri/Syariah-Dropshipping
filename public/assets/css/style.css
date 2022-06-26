@@ -1,5 +1,5 @@
 body {
-    color: #056AD3;
+    color: #176E23;
     font-family: Open Sans, sans-serif;;
 }
 nav {
@@ -10,10 +10,10 @@ nav {
 .cards {
     width: 55rem;
     padding: 1rem 3rem;
-    box-shadow: 0px 0px 4px 2px rgba(0, 88, 183, 0.048);
+    box-shadow: 0px 0px 7px 1px rgba(12, 126, 52, 0.24);
     border-radius: 8px;
     margin-top: 1rem;
-    border: 0.1px solid #0569d32c;
+    background-color: white;
 }
 .cardProduk {
     width: 55rem;
@@ -32,8 +32,8 @@ nav {
     margin-left: 1rem;
     
     background-color: #ebf3ff;
-    color: #056AD3;
-    border: 1px solid #056AD3;
+    color: #176E23;
+    border: 1px solid #176E23;
 
     outline:0;
     display:block;
@@ -46,10 +46,11 @@ nav {
     cursor: pointer;
 }
 .cardToko:hover{
-    border: 1px solid #056AD3;
+    color: #176E23;
+    border: 1px solid #176E23;
     top:-4px;
     right:-4px;
-    box-shadow:-5px 5px  #056AD3;
+    box-shadow:-5px 5px  #176E23;
 }
 
 .infoToko{
@@ -71,7 +72,7 @@ a{
 }
 .actived1 {
     position: relative;
-    color: #056AD3;
+    color: #176E23;
     padding-bottom: 5px;
     font-weight: 600;
   }
@@ -83,12 +84,12 @@ a{
     bottom: 0;
     height: 15px;
     width: 35%;
-    border-bottom: 2px solid #056AD3;
+    border-bottom: 2px solid #176E23;
 }
 
 .actived2 {
     position: relative;
-    color: #056AD3;
+    color: #176E23;
     padding-bottom: 5px;
     font-weight: 600;
   }
@@ -100,33 +101,25 @@ a{
     bottom: 0;
     height: 15px;
     width: 35%;
-    border-bottom: 2px solid #056AD3;
+    border-bottom: 2px solid #176E23;
 }
 
 .actived3 {
-    position: relative;
-    color: #056AD3;
-    padding-bottom: 5px;
-    font-weight: 600;
+    color: black !important;
   }
 
-.actived3::before{
-    content: "";
-    position: absolute;
-    left: 33px;
-    bottom: 0;
-    height: 15px;
-    width: 35%;
-    border-bottom: 2px solid #056AD3;
-}
 .cHead{
     font-weight: 700; font-size:22px; margin-bottom:0.5rem;
 }
 .cBody{
     width:20rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
+.txHover{
+    color:#176E23; font-weight:600;
+}
 .txHover:hover{
-    font-weight: 600;
+    font-weight: 700;
+    color:#176E23;
 }
 td {
     max-width: 10rem;
@@ -156,7 +149,7 @@ td {
     border: none;
 }
 .btn-prm {
-    background-color: #056AD3;
+    background-color: #176E23;
     width: 6rem;
     color: #FFFFFF;
     font-weight: 600;
@@ -164,10 +157,10 @@ td {
 }
 .btn-prm:hover {
     color: #FFFFFF;
-    background-color: #034AB6;
+    background-color: #01AC67;
 }
 .tblMax{
-    max-height: 30rem;
+    max-height: 25.5rem;
     overflow-y: scroll;   
 }
 .btnBack{
@@ -179,15 +172,18 @@ td {
 }
 
 .btn-scn {
-    background-color: #E0ECFF;
+    background-color: #DDF1EA;
+    border-color: #DDF1EA;
+    color: #176E23;
     width: 6rem;
-    color: #056AD3;
+    
     font-weight: 600;
 }
 
 .btn-scn:hover {
-    border: 1px solid #056AD3;
-    color: #056AD3;
+    background-color: #DDF1EA;
+    border: thin solid #01AC67;
+    color: #176E23;
 }
 
 .btn-red {
@@ -202,12 +198,13 @@ td {
 }
 
 .navButton{
-    color: #056AD3;
+    color: #737373de;
     border: none;
     background: none;
+    font-weight: 600;
 }
 .navButton:hover{
-    font-weight: 700;
+    color: black;
 }
 
 .carousel-item img {
@@ -218,15 +215,92 @@ td {
     object-position: 50% 50%;
 }
 
-.btn-primary{
-    background-color: #056AD3;
+.btn-primary {
+    background-color: #176E23;
     border: none;
-}
-.btn-primary:hover {
-    color: #FFFFFF;
-    background-color: #034AB6;
-}
-
+  }
+.btn-primary:focus {
+    background-color: #176E23;
+    border: none;
+  }
+  
 .produkBody::-webkit-scrollbar {
     display: none; 
   }
+
+.btn-primary:hover {
+    background-color: #01AC67;
+  }
+  
+.btn-secondary {
+    background-color: #DDF1EA;
+    border-color: #DDF1EA;
+    color: #176E23;
+  }
+  
+.btn-secondary:hover {
+    background-color: #DDF1EA;
+    border: thin solid #01AC67;
+    color: #176E23;
+  }
+.btn-secondary:focus {
+    background-color: #DDF1EA;
+    border: thin solid #01AC67;
+    color: #176E23;
+  }
+
+.nav-link:active{
+    color: #176E23;
+  }
+
+  .btn-primary2 {
+    background-color: #0C3612;
+    color: white;
+    border: none;
+  }
+
+  .btn-primary2:hover {
+    background-color: white;
+    color: #176E23;
+    
+  }
+
+  .card-green {
+    width: 55rem;
+    padding: 1rem 3rem;
+    box-shadow: 0px 0px 7px 1px rgba(12, 126, 52, 0.24);
+    border-radius: 8px;
+    margin-top: 1rem;
+    border: 0.1px solid rgba(12, 126, 52, 0.24);
+    background-color: #176E23;
+    color: white;
+}
+
+.cHover{
+    background-color: #ebf3ff;
+    color: #176E23;
+    border: 1px solid #176E23;
+
+    outline:0;
+    position:relative;
+    top:0;
+    left:0;
+    transition: all 100ms ease-in;
+    cursor: pointer;
+}
+.cHover:hover{
+    border: 1px solid #176E23;
+    top:-4px;
+    right:-4px;
+    box-shadow:-5px 5px  #176E23;
+}
+
+.assetGBR:hover{
+    cursor: pointer;
+    border: 3px solid #01AC67;
+}
+
+
+  
+    
+  

@@ -10,20 +10,20 @@ class LoginController extends Controller
 {
     public function index()
     {
-        return view('Landing-page');
+        return view('Login-page');
     }
 
     public function authenticate(Request $request)
     {
         $validate = $request->validate([
-            'email' => ['required', 'email:dns'],
+            'username' => ['required'],
             'password' => ['required'],
         ]);
 
         if (Auth::attempt($validate)) {
             $request->session()->regenerate();
             if (auth()->user()->role == "admin") {
-                return redirect()->intended('/admin-dashboard');
+                return redirect()->intended('/admin-supplier');
             } elseif (auth()->user()->role == "supplier") {
 
                 if (auth()->user()->supplier->toko->status_akun == "Belum aktif") {

@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('produks', function (Blueprint $table) {
             $table->id();
             $table->string('nama_produk');
-            $table->float('harga');
-            $table->float('saran_harga');
+            $table->string('harga');
+            $table->string('saran_harga');
             $table->integer('stok');
             $table->float('berat');
             $table->string('deskripsi');
@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('kategori');
             $table->foreignId('toko_id')->constrained('tokos')->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
-        }); 
+        });
     }
 
     /**

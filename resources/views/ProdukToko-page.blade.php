@@ -16,8 +16,8 @@
                                         </div>
                                         <div class="col-11" style="padding: 0.8rem 0rem;">
                                             <div class="cHead" style="font-size: 18px">{{$toko->nama_toko}}</div>
-                                            <div class="cBody" style="font-size: 14px">{{$toko->deskripsi}}</div>
-                                            <div class="cBody" style="font-size: 14px">{{$toko->kota}} - {{$toko->alamat}}</div>
+                                            <div class="cBody" style="font-size: 14px; width:100%">{{$toko->deskripsi}}</div>
+                                            <div class="cBody" style="font-size: 14px; width:100%">{{$toko->kota}} - {{$toko->alamat}}</div>
                                             <div class="cBody" style="font-size: 14px">{{$toko->supplier->user->no_handphone}}</div>
                                         </div>
                                     </div>
@@ -36,10 +36,10 @@
                           @foreach ($toko->produks as $produk)
                           @if($produk->stok > 0)
                               <div class="col">
-                                <div class="card" style="height: 25rem">
-                                    <img src="{{url($produk->gambar_utama)}}" class="card-img-top" alt="..." style="object-fit: cover; min-height:35vh; max-height:35vh ">
+                                <div class="card" style="height: 24rem">
+                                    <img src="{{url($produk->gambar_utama)}}" class="card-img-top" alt="..." style="object-fit: cover; min-height:30vh; max-height:30vh ">
                                     <div class="card-body">
-                                        <h5 class="card-title" style="font-size: 14px">{{$produk->nama_produk}}</h5>
+                                        <h5 class="card-title" style="font-size: 14px; text-overflow:ellipsis;">{{$produk->nama_produk}}</h5>
                                         
                                         <span class="card-text" style="font-size: 16px; font-weight:700">Rp{{$produk->harga}}</span><br>
                                         <span class="card-text m-0" style="font-size: 12px; font-weight:600">Saran Penjualan: Rp{{$produk->saran_harga}}</span><br>
@@ -52,11 +52,11 @@
                                                 @endif
                                             @endforeach 
                                         </span><br>
-                                        <a href="/detail-produk/{{$produk->id}}" class="btn btn-sm btn-scn mt-2" style="width:5rem">Detail</a>
+                                        <a href="/detail-produk/{{$produk->id}}" class="btn btn-sm btn-scn mt-3" style="width:5rem">Detail</a>
                                         @if(auth()->user()->role == "dropshipper")
-                                        <a href="/checkout/{{$produk->id}}" class="btn btn-sm btn-prm ms-2 mt-2">Beli</a>
+                                        <a href="/checkout/{{$produk->id}}" class="btn btn-sm btn-prm ms-2 mt-3">Beli</a>
                                         @else
-                                        <a href="/edit-produk/{{$produk->id}}" class="btn btn-sm btn-prm ms-2 mt-2">Edit</a>
+                                        <a href="/edit-produk/{{$produk->id}}" class="btn btn-sm btn-prm ms-2 mt-3">Edit</a>
                                         @endif
                                   </div>
                                 </div>

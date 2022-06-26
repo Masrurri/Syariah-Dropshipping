@@ -12,17 +12,24 @@ use Illuminate\Support\Str;
 
 class ProdukController extends Controller
 {
-    public function index()
+    public function index($filter = "Terbaru")
     {
-        $produks = Produk::all();
         $categories = Category::all();
+        if ($filter == "Semua Produk") {
+            $produks = Produk::all();
+        } else {
+            $category = Category::where('name', $filter)->get();
+            $produks = Produk::where('category_id', $category[0]->id)->get();
+        }
 
         return view('Produk-page', [
             "title" => "Produk",
             "products" => $produks,
             "categories" => $categories,
+            "filter" => $filter
         ]);
     }
+
 
     public function my_produk()
     {
@@ -196,7 +203,7 @@ class ProdukController extends Controller
         ]);
 
         $data = [
-            'no_order' => $produk->id . date('Y') . date('m') . date('d') . date('H') . date('i') . date('s') . Str::upper(Str::random(3)),
+            'no_order' => Str::upper(Str::random(3)) . $produk->id . date('Y') . date('m') . date('d') . date('H') . date('i') . date('s'),
             'produk_id' => $produk->id,
             'nama_produk' => $produk->nama_produk,
             'jumlah' => $validate['jumlah'],

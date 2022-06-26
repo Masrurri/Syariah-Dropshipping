@@ -13,9 +13,13 @@ class TransaksiController extends Controller
     {
         if (auth()->user()->role == "supplier") {
             $transactions = Transaksi::where('toko_id', auth()->user()->supplier->toko->id)->orderByDesc('created_at')->get();
+            // $transactions = Transaksi::where('toko_id', auth()->user()->supplier->toko->id)->sum('total_harga');
+            // $transactions = Transaksi::select('total_harga')->where('toko_id', auth()->user()->supplier->toko->id)->get();
+
         } else {
-            $transactions = Transaksi::where('dropshipper_id', auth()->user()->dropshipper->id)->orderByDesc('created_at')->get();
+            $transactions = Transaksi::where('dropshipper_id', auth()->user()->dropshipper->id)->orderByDesc('created_at')->first();
         }
+        // return $transactions;
         return view('Transaksi-page', [
             "title" => "Transaksi",
             "transactions" => $transactions,
@@ -62,7 +66,7 @@ class TransaksiController extends Controller
         ]);
 
         $update = Transaksi::where('id', $transaksi->id)->update([
-            "no_resi" => "",
+            "no_resi" => $validate['no_resi'],
             "status_pembayaran" => $validate['status_pembayaran'],
         ]);
 

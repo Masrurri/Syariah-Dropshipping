@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Toko;
+use App\Models\Dropshipper;
+use App\Models\Transaksi;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -10,8 +12,8 @@ class AdminController extends Controller
     public function index()
     {
         $tokos = Toko::all();
-        return view("AdminDashboard-page", [
-            "title" => "Admin Dashboard",
+        return view("AdminSupplier-page", [
+            "title" => "Admin Supplier",
             "tokos" => $tokos
         ]);
     }
@@ -26,6 +28,25 @@ class AdminController extends Controller
         ]);
     }
 
+    public function dropshipper_page(Dropshipper $dropshippers)
+    {
+        $dropshippers = Dropshipper::all();
+        return view("AdminDropshipper-page", [
+            "title" => "Admin Dropshipper",
+            "dropshippers" => $dropshippers,
+        ]);
+    }
+
+    public function detail_dropshipper(Dropshipper $dropshipper)
+    {
+        $transactions = Transaksi::all();
+        return view("AdminDetailDropshipper-page", [
+            "title" => "Admin Detail Dropshipper",
+            "dropshipper" => $dropshipper,
+            "transaksi" => $transactions,
+        ]);
+    }
+
     public function update(Request $request, Toko $toko)
     {
         $validate = $request->validate([
@@ -35,8 +56,8 @@ class AdminController extends Controller
         $update = Toko::where('id', $toko->id)->update(["status_akun" => $validate['status_akun']]);
 
         if ($update) {
-            return redirect('admin-dashboard')->with('success', 'Status updated!');
+            return redirect('admin-supplier')->with('success', 'Status updated!');
         }
-        return redirect('admin-dashboard')->with('loginError', 'Update status failed!');
+        return redirect('admin-supplier')->with('loginError', 'Update status failed!');
     }
 }

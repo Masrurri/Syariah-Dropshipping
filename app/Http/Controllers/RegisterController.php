@@ -23,7 +23,8 @@ class RegisterController extends Controller
             'sebagai' => 'required',
             'nama_toko' => '',
             'nama_lengkap' => 'required',
-            'no_handphone' => 'required',
+            'username' => ['required', 'unique:users,username'],
+            'no_handphone' => ['required', 'unique:users,no_handphone'],
             'email' => ['required', 'unique:users,email', 'email:dns'],
             'password' => ['required', 'min:8'],
             'ketentuan_acc' => 'required',
@@ -38,6 +39,7 @@ class RegisterController extends Controller
 
         $user_data = [
             'nama_lengkap' => $validated['nama_lengkap'],
+            'username' => $validated['username'],
             'email' => $validated['email'],
             'no_handphone' => $validated['no_handphone'],
             'password' => bcrypt($validated['password']),

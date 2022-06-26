@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('produk_id')->constrained('produks')->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
             $table->integer('jumlah');
-            $table->float('ongkir');
+            $table->string('ongkir');
             $table->string('keterangan');
             $table->string('jasa_kurir');
             $table->float('total_harga');

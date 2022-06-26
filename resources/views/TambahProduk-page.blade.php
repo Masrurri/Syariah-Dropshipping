@@ -11,8 +11,8 @@
                     @csrf
                     <div class="row">
                         <div class="col-6">
-                            <label id="nama-barang-label" for="nama-barang" class="form-label" style="font-weight:600">Nama Barang</label>
-                            <input type="text" class="form-control form-control-sm @error('nama_produk') is-invalid @enderror" name="nama_produk" id="nama-barang" value="" required>
+                            <label id="nama-barang-label" for="nama-barang" class="form-label" style="font-weight:600" >Nama Barang</label>
+                            <input maxlength="60" type="text" class="form-control form-control-sm @error('nama_produk') is-invalid @enderror" name="nama_produk" id="nama-barang" value="" required>
                             @error('nama_produk')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -85,7 +85,7 @@
                             @enderror
                         </div>
                         <div class="col-3">
-                            <label id="berat-label" for="berat" class="form-label" style="font-weight:600">Berat</label>
+                            <label id="berat-label" for="berat" class="form-label" style="font-weight:600">Berat (kg)</label>
                             <input type="number" min="0" step="0.1" class="form-control form-control-sm @error('berat') is-invalid @enderror" name="berat" id="berat" value="" required>
                             @error('berat')
                             <div class="invalid-feedback">

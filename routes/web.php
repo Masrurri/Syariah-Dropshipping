@@ -33,19 +33,24 @@ Route::post('/register', [RegisterController::class, 'store']);
 Route::middleware(['guest'])->group(function () {
     Route::get('/', [LandingPageController::class, 'index'])->name('landing-page');
     Route::get('/register', [RegisterController::class, 'index']);
+    Route::get('/login', [LoginController::class, 'index']);
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/admin-dashboard', [AdminController::class, "index"]);
+    Route::get('/admin-supplier', [AdminController::class, "index"]);
+    Route::get('/admin-dropshipper', [AdminController::class, "dropshipper_page"]);
+    Route::get('/admin-detail-dropshipper/{dropshipper}', [AdminController::class, "detail_dropshipper"]);
 
     Route::get('/admin-detail-toko/{toko}', [AdminController::class, "detail_toko"]);
     Route::put('/update_status/{toko}', [AdminController::class, "update"]);
+    Route::get('/detail-transaksi/{transaksi}', [TransaksiController::class, "detail_transaksi"]);
 });
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, "index"]);
 
-    Route::get('/produk', [ProdukController::class, "index"]);
+    // Route::get('/produk', [ProdukController::class, "index"]);
+    Route::get('/produk/{filter?}', [ProdukController::class, "index"])->name('produk');
 
     Route::get('/transaksi', [TransaksiController::class, "index"]);
 

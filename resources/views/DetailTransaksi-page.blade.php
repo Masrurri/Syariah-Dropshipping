@@ -38,7 +38,7 @@
                         @endif
                     @endif
                 @else
-                    @if ($transaksi->status_pembayaran == "Belum Bayar")
+                    @if ($transaksi->status_pembayaran == "Tidak Ada")
                         <div class="col-8 alert alert-warning px-3 py-2 mt-3" role="alert" style="font-size:14px">
                             Segera lakukan pembayaran anda ke rekening berikut <br> 
                             <span style="font-weight: 700">{{$bank}}</span> No Rek. <span style="font-weight: 700"> {{$norek}} </span> A/N <span style="font-weight: 700"> {{$pemilik}} </span> 
@@ -120,11 +120,17 @@
                     <div class="row mt-3">
                         <div class="col-3">
                             <label id="no-resi-pengiriman-label" for="no-resi-pengiriman" class="form-label ps-2">Resi Pengiriman</label>
-                            @if(auth()->user()->role == "supplier")
-                            <input onchange="isChange()" type="text" class="form-control form-control-sm ms-2" name="no_resi" id="no-resi-pengiriman" value="{{$transaksi->no_resi}}" placeholder="Tambahkan Resi">
+                            @if($transaksi->status_pembayaran == "Ditolak") 
+                                <div class="alert alert-danger px-2 py-1 ms-2" role="alert" style="font-size:14px; font-weight:600">Pembayaran Ditolak</div>
                             @else
-                            <input type="text" class="form-control form-control-sm ms-2" name="no_resi" id="no-resi-pengiriman" readonly disabled value="{{$transaksi->no_resi}}" placeholder="Tambahkan Resi">
+                                @if(auth()->user()->role == "supplier")
+                                <input onchange="isChange()" type="text" class="form-control form-control-sm ms-2" name="no_resi" id="no-resi-pengiriman" value="{{$transaksi->no_resi}}" placeholder="Tambahkan Resi" maxlength="16">
+                                @else
+                                <div class="alert alert-primary px-2 py-1 ms-2" role="alert" style="font-size:14px; font-weight:600">@if($transaksi->status_pembayaran == "Tidak Ada") Bukti pembayaran belum diinputkan @elseif($transaksi->status_pembayaran == "Menunggu Konfirmasi") Menunggu Konfirmasi @else {{$transaksi->no_resi}} @endif</div>
+                                <input hidden type="text" class="form-control form-control-sm ms-2" name="no_resi" id="no-resi-pengiriman" readonly disabled value="{{$transaksi->no_resi}}" placeholder="Tambahkan Resi">
+                                @endif
                             @endif
+                            
                         </div>
                         <div class="col-2">
                             <label id="kota-tujuan-label" for="kota-tujuan" class="form-label ps-2">Kota Tujuan</label>
@@ -138,27 +144,25 @@
                     {{-- new line --}}
                     <div class="row mt-3" style="font-weight: 600">
                         <div class="col-3">
-                            <label id="total-harga-label" for="total-harga" class="form-label ps-2">Total Harga</label>
-                            <input type="text" class="form-control-sm form-control-plaintext ps-2" readonly id="total-harga" value="Rp{{$transaksi->total_harga}}" style="font-weight: 700">
-                        </div>
-                        <div class="col-3">
                             <label id="status-pembayaran-label" for="status-pembayaran" class="form-label ps-2">Status Pembayaran</label><br>
-                            <div class="form-check form-check-inline ms-2" style="font-weight: 400; color:black">
-                                <input onchange="isChange()" @if($transaksi->status_pembayaran == "Diterima") checked @endif class="form-check-input" type="radio" name="status_pembayaran" id="inlineRadio1" value="Diterima" @if(auth()->user()->role == "dropshipper") disabled @endif>
+                            @if($transaksi->status_pembayaran == "Diterima")  <div class="alert alert-success px-2 py-1 ms-2" role="alert" style="font-size:14px; font-weight:600">Pembayaran Diterima</div>
+                            @elseif($transaksi->status_pembayaran == "Ditolak") <div class="alert alert-danger px-2 py-1 ms-2" role="alert" style="font-size:14px; font-weight:600">Pembayaran Ditolak</div>
+                            @elseif($transaksi->status_pembayaran == "Menunggu Konfirmasi") <div class="alert alert-primary px-2 py-1 ms-2" role="alert" style="font-size:14px; font-weight:600" @if(auth()->user()->role == "supplier") hidden @endif>Menunggu Konfirmasi</div>
+                            @else <div class="alert alert-primary px-2 py-1 ms-2" role="alert" style="font-size:14px; font-weight:600">Bukti pembayaran belum diinputkan</div>
+                            @endif
+                            
+                            <div class="form-check form-check-inline ms-2" style="font-weight: 400; color:black" @if(auth()->user()->role == "dropshipper" or $transaksi->status_pembayaran != "Menunggu Konfirmasi") hidden @endif>
+                                <input onchange="isChange()" @if($transaksi->status_pembayaran == "Diterima") checked @endif class="form-check-input" type="radio" name="status_pembayaran" id="inlineRadio1" value="Diterima" @if(auth()->user()->role == "dropshipper") disabled @endif @if(auth()->user()->role == "admin") disabled @endif>
                                 <label class="form-check-label" for="inlineRadio1">Diterima</label>
                             </div>
-                            <div class="form-check form-check-inline" style="font-weight: 400; color:black">
-                                <input onchange="isChange()" @if($transaksi->status_pembayaran == "Ditolak") checked @endif class="form-check-input" type="radio" name="status_pembayaran" id="inlineRadio2" value="Ditolak" @if(auth()->user()->role == "dropshipper") disabled @endif>
+                            <div class="form-check form-check-inline" style="font-weight: 400; color:black" @if(auth()->user()->role == "dropshipper" or $transaksi->status_pembayaran != "Menunggu Konfirmasi") hidden @endif>
+                                <input onchange="isChange()" @if($transaksi->status_pembayaran == "Ditolak") checked @endif class="form-check-input" type="radio" name="status_pembayaran" id="inlineRadio2" value="Ditolak" @if(auth()->user()->role == "dropshipper") disabled @endif @if(auth()->user()->role == "admin") disabled @endif>
                                 <label class="form-check-label" for="inlineRadio2">Ditolak</label>
                             </div>
                         </div>
-                        
-                        
-                    </div>
-                    <div class="row mt-3" style="font-weight: 600">
-                        <div class="col-3">
+                        <div class="col-2">
                             <label id="label-pengiriman-label" for="label-pengiriman" class="form-label ps-2">Label Pengiriman</label>
-                            <button style="width: 6rem" type="button" class="ms-2 btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#labelPengiriman">Lihat</button>
+                            <button style="width: 6rem" type="button" class="ms-2 btn btn-sm btn-prm" data-bs-toggle="modal" data-bs-target="#labelPengiriman">Lihat</button>
                             <!-- Modal -->
                             <div class="modal fade" id="labelPengiriman" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -180,10 +184,10 @@
                         <div class="col-3">
                             <label id="bukti-pembayaran-label" for="bukti-pembayaran" class="form-label ps-2">Bukti Pembayaran</label>
                             @if(auth()->user()->role == "supplier")
-                                <button @if($transaksi->bukti_pembayaran == "") disabled @endif style="width: 6rem; display:inline" type="button" class="ms-2 btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#buktiPembayaran">Lihat</button>
+                                <button @if($transaksi->bukti_pembayaran == "") disabled @endif style="width: 6rem; display:inline" type="button" class="ms-2 btn btn-sm btn-prm" data-bs-toggle="modal" data-bs-target="#buktiPembayaran">Lihat</button>
                             @else
                                 @if ($transaksi->bukti_pembayaran == "")
-                                    <input onchange="isChange()" class="ms-2 form-control form-control-sm" id="buktiUpload" @error('bukti_pembayaran') is-invalid @enderror name="bukti_pembayaran" type="file" accept="image/jpeg, image/jpg, image/png" required>
+                                    <input onchange="isChange()" class="ms-2 form-control form-control-sm" id="buktiUpload" @error('bukti_pembayaran') is-invalid @enderror name="bukti_pembayaran" type="file" accept="image/jpeg, image/jpg, image/png" required @if(auth()->user()->role == "admin") disabled @endif>
                                 @else
                                     <button style="width: 6rem; display:inline" type="button" class="ms-2 btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#buktiPembayaran">Lihat</button>
                                 @endif
@@ -206,9 +210,18 @@
                                 </div>
                             </div>
                         </div>
+                        
+                        
+                    </div>
+                    <div class="row mt-2" style="font-weight: 600">
+                        <div class="col-3">
+                            <label id="total-harga-label" for="total-harga" class="form-label ps-2">Total Harga</label>
+                            <input type="text" class="form-control-sm form-control-plaintext ps-2" readonly id="total-harga" value="Rp{{number_format($transaksi->total_harga) }}" style="font-weight: 700">
+                        </div>
+                        
                     </div>
                     {{-- new line --}}
-                    <div class="row mt-2" style="font-weight: 600">
+                    <div class="row mt-2" style="font-weight: 600" @if(auth()->user()->role == "admin") hidden @endif>
                         <div class="col-4 ms-2 mt-4">
                             <a href="/transaksi" type="button" class="btn btn-sm btn-scn" style="margin-right: 1rem;">Batal</a>
                             <button type="submit" class="btn btn-sm btn-prm" id="simpan" disabled>Simpan</button>

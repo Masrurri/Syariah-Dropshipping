@@ -19,6 +19,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'nama_lengkap',
+        'username',
         'email',
         'no_handphone',
         'password',
@@ -35,7 +36,8 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    public function supplier() {
+    public function supplier()
+    {
         return $this->hasOne(Supplier::class);
     }
 

@@ -10,14 +10,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <link href="/assets/css/style.css" rel="stylesheet">
 
     <title> {{ $title }} | Syariah Dropshipping</title>
 </head>
 
 <body >
-    @include('Navbar')
-    <div class="d-flex align-items-center" style="margin-top: 7rem;">
+    @if(auth()->user()->role == "admin")  
+        @include('NavbarAdmin')
+    @else
+        @include('Navbar')
+    @endif
+    
+    <div class="d-flex align-items-center" style="margin-top: 6rem;">
         @yield('container')
     </div>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>

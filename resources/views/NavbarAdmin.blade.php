@@ -1,23 +1,15 @@
-<nav class="navbar fixed-top navbar-expand-sm navbar-light">
-    <div class="container-fluid " style="padding-left: 103px; padding-right: 103px;">
-        <a class="navbar-brand" href="/admin-dashboard" style="font-family: Philosopher; font-size: 22px; color: #056AD3; line-height: 22px;">DropSup</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse " id="navbarSupportedContent" style="font-family: Open Sans;">
-            <ul class="navbar-nav" style="color:#034AB6">
-                <li class="nav-item">
-                    <a class="container-fluid" href="/admin-dashboard">
-                        Admin
-                    </a>
-                </li>
-                {{-- <li class="nav-item">
-                    <a class="container-fluid " href="/admin-dropshipper">
-                        Dropshipper
-                    </a>
-                </li>   --}}
+<nav class="navbar navbar-light navbar-expand-md fixed-top" style="font-weight: 600">
+    <div class="container"><a class="navbar-brand d-flex align-items-center" href="#"><img src="{{asset('assets/img/brand.png')}}" width="130rem" /></a><button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div id="navcol-1" class="collapse navbar-collapse">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item"><a class="nav-link {{ ($title === "Admin Supplier")? 'active' : '' }}" href="/admin-supplier">Supplier</a></li>
+                <li class="nav-item"><a class="nav-link {{ ($title === "Admin Dropshipper")? 'active' : '' }}" href="/admin-dropshipper">Dropshipper</a></li>
             </ul>
+            
             <ul class="navbar-nav ms-auto">
+                <li class="nav-item">                       
+                    <button type="submit" class="container-fluid navButton active">Admin</button>
+                </li>
                 <li class="nav-item">
                     <form action="/logout" method="post">
                         @csrf
@@ -25,6 +17,7 @@
                     </form>
                 </li>
             </ul>
+            
         </div>
     </div>
 </nav>

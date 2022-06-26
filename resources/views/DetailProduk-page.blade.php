@@ -14,23 +14,19 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
-        <div class="row">
+        {{-- <div class="row">
             <div class="col-2">
-                <a href="@if(auth()->user()->role == "supplier")/myproduk @else /produk @endif"><i class="fa fa-chevron-left me-2" aria-hidden="true"></i>Kembali</a> 
+                <a href="@if(auth()->user()->role == "supplier")/myproduk @else {{ route('produk', array('filter' => 'Semua Produk'))}} @endif"><i class="fa fa-chevron-left me-2" aria-hidden="true"></i>Kembali</a> 
             </div>
-        </div>
+        </div> --}}
         <div class="row ">
             <div class="col cards p-5 mb-5">
                 <div class="row ">
                     <div class="col-3">
                         <div class="row justify-content-center">
                             <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="width: 100%">
-                                <div class="carousel-indicators">
-                                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                                </div>
-                                <div class="carousel-inner">
+
+                                <div class="carousel-inner" style="border-radius:6pt">
                                     <div class="carousel-item active">
                                         <img src="{{url($produk->gambar_utama)}}" class="d-block w-100" alt="...">
                                     </div>
@@ -41,11 +37,11 @@
                                         </div>
                                     @endforeach
                                 </div>
-                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                <button class="ms-2 carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                   <span class="visually-hidden">Previous</span>
                                 </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                <button class="me-2 carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
                                   <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                   <span class="visually-hidden">Next</span>
                                 </button>
@@ -68,7 +64,9 @@
                                     <div class="row mb-3">
                                         @foreach ($assets as $key => $asset)
                                             <div class="col-4 p-2">
-                                                <img src="{{url($asset->url)}}" alt="..." style="width: 100%">
+                                                <a href="{{url($asset->url)}}" target="_blank">
+                                                    <img class="assetGBR" src="{{url($asset->url)}}" alt="..." style="height: 30vh; object-fit:cover; max-width:17vw; min-width:17vw; border-radius:5px;">
+                                                  </a>  
                                             </div>
                                         @endforeach
                                     </div>
@@ -76,7 +74,7 @@
                                 </div>
 
                                 <div class="modal-footer">
-
+                                    <button data-bs-dismiss="modal" onclick="downloadAll()" type="button" class="btn btn-md btn-prm" style="width:12rem;"><i class="bi bi-download me-2" style="font-size: 18px"></i>Download Asset</button>
                                 </div>
                                 </div>
                             </div>
@@ -139,6 +137,24 @@
                 a.style.overflow = "hidden";
                 a.style.maxHeight = "8vh";
             }      
+        }
+
+        function downloadAll(){
+            var images = document.getElementsByClassName('assetGBR');
+            var srcList = [];
+            var i = 0;
+
+            setInterval(function(){
+                if(images.length > i){
+                    srcList.push(images[i].src);
+                    var link = document.createElement("a");
+                    link.id=i;
+                    link.download = "assets "+i;
+                    link.href = images[i].src;
+                    link.click();
+                    i++;
+                }
+            },1000);
         }
     </script>
 @endsection

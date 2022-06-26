@@ -2,7 +2,7 @@
 
 @section('container')
 <div class="container ">
-    @if(session()->has('success'))
+        {{-- @if(session()->has('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             {{ session('success') }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -13,7 +13,7 @@
                 {{ session('loginError') }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
-        @endif
+        @endif --}}
     <div class="row cards ps-4 py-4 w-100">
         <div class="row">
             <span style="font-size: 24px; font-weight:600;">Pembayaran</span>

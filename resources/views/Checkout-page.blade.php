@@ -4,25 +4,27 @@
 <div class="container ">
     <div class="row ">
         <div class="col-2">
-            <span style="font-size: 24px; font-weight:600;">Checkout</span> 
-        </div>
-        
+            
+        </div>   
      </div>
     <form action="/checkout/{{$produk->id}}" method="post" enctype="multipart/form-data">
     @csrf
     <div class="row cards ps-4 py-4 w-100 mb-5">
+        <div class="row">
+            <span style="font-size: 24px; font-weight:600;" class="ms-3">Checkout</span> 
+        </div>
+        <div class="row">
             <div class="col-6 ">
                 <div class="row mt-3 ms-1">
                     <div class="col">
                         <div class="card mb-3" style="max-width: 34.4vw; max-height:20vh">
                             <div class="row g-0">
                             <div class="col-md-3">
-                                <img src="{{url($produk->gambar_utama)}}" class="img-fluid rounded-start" alt="..." style="object-fit: cover; min-height:19vh; max-height:19vh; width:100%;">
-                                
+                                <img src="{{url($produk->gambar_utama)}}" class="img-fluid rounded-start" alt="..." style="object-fit: cover; min-height:19vh; max-height:19vh; width:100%;">   
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
-                                    <h5 class="card-title" style="font-size: 14px">{{$produk->nama_produk}}</h5>
+                                    <h5 class="card-title" style="font-size: 14px; font-weight:600">{{$produk->nama_produk}}</h5>
                                     <span class="card-text" style="font-size: 14px; font-weight:700">Berat:</span>
                                     <input id="berat" type="text" name="berat" value="{{$produk->berat}} Kg" readonly style="border: none; font-size:14px; font-weight:700; color:#056AD3"><br>
                                     <span class="card-text" style="font-size: 14px; font-weight:700">Harga:</span>
@@ -59,7 +61,7 @@
                                         </div> 
                                         <div class="col-6">
                                             <label id="telp-pengirim-label" for="telp-pengirim" class="form-label" style="font-weight: 600; font-size: 14px">Telp. Pengirim</label>
-                                            <input type="tel" name="no_hp_pengirim" class="form-control-sm form-control @error('no_hp_pengirim') is-invalid @enderror" id="telp-pengirim" value="" required>
+                                            <input maxlength="13" type="tel" name="no_hp_pengirim" class="form-control-sm form-control @error('no_hp_pengirim') is-invalid @enderror" id="telp-pengirim" value="" required>
                                         </div> 
                                     </div>
                                     <div class="row mt-2">
@@ -142,7 +144,7 @@
                                     </div>
                                     <div class="col-5">
                                         <label id="telp-penerima-label" for="telp-penerima" class="form-label" style="font-weight: 600; font-size: 14px">Telp. Penerima</label>
-                                        <input type="text" class="form-control-sm form-control @error('no_hp_penerima') is-invalid @enderror" name="no_hp_penerima" id="telp-penerima" value="" placeholder="" required>
+                                        <input maxlength="13" type="text" class="form-control-sm form-control @error('no_hp_penerima') is-invalid @enderror" name="no_hp_penerima" id="telp-penerima" value="" placeholder="" required>
                                     </div>
                                 </div>
                                 <div class="row mt-2 mb-1">
@@ -157,10 +159,9 @@
                         </div>
                     </div>
                     
-                </div>
-                
-                
+                </div> 
             </div>
+        </div>
     </div>
     </form>
 
@@ -174,6 +175,13 @@
       
         document.getElementById("totalHarga").value = hasil;
     }, false);
-
+    function hargaTotal() {
+      var x = parseFloat((document.getElementById("harga").value).replace ( /\D+/g, "" ));
+      var y = parseInt(document.getElementById("jumlah").value);
+      var z = parseInt((document.getElementById("ongkir").value).replace ( /\D+/g, ""));
+      let hasil = x*y+z;
+      
+      document.getElementById("totalHarga").value = hasil;
+    }
 </script>
 @endsection

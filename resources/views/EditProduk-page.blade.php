@@ -25,7 +25,7 @@
                     <div class="row">
                         <div class="col">
                             <label id="nama-barang-label" for="nama-barang" class="form-label" style="font-weight:600">Nama Barang</label>
-                            <input type="text" class="form-control form-control-sm @error('nama_produk') is-invalid @enderror" name="nama_produk" id="nama-barang" value="{{$produk->nama_produk}}" required>
+                            <input maxlength="60" type="text" class="form-control form-control-sm @error('nama_produk') is-invalid @enderror" name="nama_produk" id="nama-barang" value="{{$produk->nama_produk}}" required>
                             @error('nama_produk')
                             <div class="invalid-feedback">
                                 {{ $message }}
