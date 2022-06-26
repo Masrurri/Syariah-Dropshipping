@@ -126,7 +126,7 @@
                                 @if(auth()->user()->role == "supplier")
                                 <input onchange="isChange()" type="text" class="form-control form-control-sm ms-2" name="no_resi" id="no-resi-pengiriman" value="{{$transaksi->no_resi}}" placeholder="Tambahkan Resi" maxlength="16">
                                 @else
-                                <div class="alert alert-primary px-2 py-1 ms-2" role="alert" style="font-size:14px; font-weight:600">@if($transaksi->status_pembayaran == "Tidak Ada") Bukti pembayaran belum diinputkan @elseif($transaksi->status_pembayaran == "Menunggu Konfirmasi") Menunggu Konfirmasi @else {{$transaksi->no_resi}} @endif</div>
+                                <div class="alert alert-primary px-2 py-1 ms-2" role="alert" style="font-size:14px; font-weight:600">@if($transaksi->status_pembayaran == "Tidak Ada") Bukti pembayaran belum diinputkan @elseif($transaksi->status_pembayaran == "Menunggu Konfirmasi") Menunggu Konfirmasi @elseif($transaksi->no_resi == "") Belum Diinputkan @else {{$transaksi->no_resi}} @endif</div>
                                 <input hidden type="text" class="form-control form-control-sm ms-2" name="no_resi" id="no-resi-pengiriman" readonly disabled value="{{$transaksi->no_resi}}" placeholder="Tambahkan Resi">
                                 @endif
                             @endif
@@ -151,11 +151,11 @@
                             @else <div class="alert alert-primary px-2 py-1 ms-2" role="alert" style="font-size:14px; font-weight:600">Bukti pembayaran belum diinputkan</div>
                             @endif
                             
-                            <div class="form-check form-check-inline ms-2" style="font-weight: 400; color:black" @if(auth()->user()->role == "dropshipper" or $transaksi->status_pembayaran != "Menunggu Konfirmasi") hidden @endif>
+                            <div class="form-check form-check-inline ms-2" style="font-weight: 400; color:black" @if(auth()->user()->role == "dropshipper" or $transaksi->status_pembayaran != "Menunggu Konfirmasi" or auth()->user()->role == "admin") hidden @endif>
                                 <input onchange="isChange()" @if($transaksi->status_pembayaran == "Diterima") checked @endif class="form-check-input" type="radio" name="status_pembayaran" id="inlineRadio1" value="Diterima" @if(auth()->user()->role == "dropshipper") disabled @endif @if(auth()->user()->role == "admin") disabled @endif>
                                 <label class="form-check-label" for="inlineRadio1">Diterima</label>
                             </div>
-                            <div class="form-check form-check-inline" style="font-weight: 400; color:black" @if(auth()->user()->role == "dropshipper" or $transaksi->status_pembayaran != "Menunggu Konfirmasi") hidden @endif>
+                            <div class="form-check form-check-inline" style="font-weight: 400; color:black" @if(auth()->user()->role == "dropshipper" or $transaksi->status_pembayaran != "Menunggu Konfirmasi" or auth()->user()->role == "admin") hidden @endif>
                                 <input onchange="isChange()" @if($transaksi->status_pembayaran == "Ditolak") checked @endif class="form-check-input" type="radio" name="status_pembayaran" id="inlineRadio2" value="Ditolak" @if(auth()->user()->role == "dropshipper") disabled @endif @if(auth()->user()->role == "admin") disabled @endif>
                                 <label class="form-check-label" for="inlineRadio2">Ditolak</label>
                             </div>

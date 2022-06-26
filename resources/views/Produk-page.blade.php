@@ -18,7 +18,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row row-cols-sm-4 g-3" style="overflow-y: scroll; max-height:25rem">
+            <div class="row row-cols-sm-4 g-3 scrl" style="overflow-y: scroll; max-height:25rem">
                 @foreach ($products as $produk)
                     @if($produk->stok > 0)
                     <div class="col">

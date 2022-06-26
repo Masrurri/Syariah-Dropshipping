@@ -20,11 +20,17 @@
                     <label id="pemilikRek-label" for="pemilikRek" class="form-label" style="font-weight:600">No Handphone</label>
                     <input type="text" class="form-control form-control-sm" id="pemilikRek" value="{{$supplier->user->no_handphone}}" placeholder="Kosong" readonly>
                 </div>
-            </div>              
+            </div>
+            <div class="row mt-2">
+                <div class="col-3">
+                    <label id="teradaftar-label" for="teradaftar" class="form-label" style="font-weight:600">Tanggal Bergabung</label>
+                    <input type="text" class="form-control form-control-sm" id="teradaftar" value="{{$supplier->created_at}}" placeholder="Kosong" readonly>
+                </div>
+            </div>                
         </div>
     </div>
 
-    <div class="row ">
+    <div class="row mb-5">
         <div class="col cards ps-5 py-4">
             <div class="row ">
                 <span style="font-size: 24px; font-weight:600">Toko</span> 
@@ -100,7 +106,7 @@
                         </div>
                 </div>
             </div>
-            <div class="row mt-2">
+            <div class="row mt-3">
                 <div class="col-5">
                     <label for="alamatToko" class="form-label" style="font-weight:600">Alamat Lengkap</label>
                     <textarea class="form-control form-control-sm" id="alamatToko" rows="3" style="white-space: pre-line" placeholder="Kosong" readonly>{{$toko->alamat}}</textarea>
@@ -126,7 +132,7 @@
             </div>
             <div class="row mt-3">
                 <div class="col-4">
-                    <a href="/admin-dashboard" type="button" class="btn btn-sm btn-scn" style="margin-right: 1rem;">Batal</a>
+                    <a href="/admin-supplier" type="button" class="btn btn-sm btn-scn" style="margin-right: 1rem;">Batal</a>
                     <button type="submit" class="btn btn-sm btn-prm" >Simpan</button>
                 </div>
             </div>

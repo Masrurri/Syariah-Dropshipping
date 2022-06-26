@@ -20,10 +20,10 @@
         </div>
     </div>
     <div class="row">
-        <div class="col cards mt-3">
+        <div class="col card cardTbl mt-3 tblMax p-0 scrl" style="height:25rem">
           @if($dropshippers->isNotEmpty())
                 <table class="table table-hover" style="font-size: 14px;">
-                <thead style="color:#056AD3">
+                <thead class="tblHead">
                     <tr>
                     <th scope="col" style="width: 7rem; text-align: center">Dropshipper ID</th>
                     <th scope="col" style="width: 7rem">Tanggal Mendaftar</th>
@@ -47,7 +47,7 @@
                 </tbody>
                 </table>
           @else
-            <strong style="font-size: 24px; color:#E0ECFF">Tidak ada transaksi</strong> 
+            <strong class="ms-5 py-4" style="font-size: 24px; color:#E0ECFF">Tidak ada akun terdaftar</strong> 
           @endif
             
         </div>

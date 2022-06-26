@@ -20,12 +20,12 @@
         </div>
     </div>
     <div class="row">
-        <div class="col cards mt-3">
+        <div class="col card cardTbl mt-3 tblMax p-0 scrl" style="height:25rem">
           @if($tokos->isNotEmpty())
             <table class="table table-hover" style="font-size: 14px;">
-              <thead style="color:#056AD3">
+              <thead class="tblHead">
                 <tr>
-                  <th scope="col" style="width: 7rem">ID Toko</th>
+                  <th scope="col" style="width: 7rem; text-align: center">ID Toko</th>
                   <th scope="col" style="width: 7rem">Nama Toko</th>
                   <th scope="col" style="width: 7rem">Kota</th>
                   <th scope="col" style="width: 14rem">Alamat Lengkap</th>
@@ -37,7 +37,7 @@
               <tbody>
                 @foreach ($tokos as $toko)
                     <tr>
-                      <th >{{$toko->id}}</th>
+                      <th style="text-align: center" >{{$toko->id}}</th>
                       <td>{{$toko->nama_toko}}</td>
                       <td>{{$toko->kota}}</td>
                       <td>{{$toko->deskripsi}}</td>
@@ -52,7 +52,7 @@
               </tbody>
             </table>
           @else
-            <strong style="font-size: 24px; color:#E0ECFF">Tidak ada transaksi</strong> 
+            <strong class="ms-5 py-4" style="font-size: 24px; color:#E0ECFF">Tidak ada akun terdaftar</strong> 
           @endif
             
         </div>

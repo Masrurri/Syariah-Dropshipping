@@ -29,14 +29,14 @@
                                 Status toko anda saat ini masih <strong>Belum Aktif</strong>, segera lengkapi identitas anda terlebih dahulu agar dapat dikonfirmasi oleh Admin.
                             </div>
                         @endif
-                        @if($toko->status_akun == "Tidak Aktif")
+                        @if($toko->status_akun != "Aktif")
                             <div class="@if($toko->status_akun == "Aktif")col-2 @else col-3 @endif">
                                 
                                     <label id="identitas1-label" for="identitas1" class="form-label" style="font-weight:600">Kartu Identitas</label>
                                     <img src="{{url($toko->kartu_identitas)}}" alt="..." style="height: 20vh; object-fit:cover; max-width:10vw; min-width:10vw; border-radius:5px;">
                                     <input id="identitas1" class="mt-2 form-control form-control-sm @error('kartu_identitas') is-invalid @enderror" name="kartu_identitas" type="file" accept="image/jpeg, image/jpg, image/png" value="{{$toko->kartu_identitas}}" required>
                                     <div class="form-text" style="font-size: 13px">
-                                        *Unggah kartu identitas anda dalam format foto
+                                        *Unggah kartu identitas anda dalam format foto KTP/SIM
                                     </div>
                                     @error('kartu_identitas')
                                     <div class="invalid-feedback">

@@ -23,7 +23,7 @@
                 </div>
                 
             </div>
-            <div class="row row-cols-sm-4" style="overflow-y: scroll; max-height:25rem">
+            <div class="row row-cols-sm-4 scrl" style="overflow-y: scroll; max-height:25rem">
                 @foreach ($products as $produk)
                     <div class="col">
                         <div class="card mb-3" style="height: 23rem; max-width:16rem;">

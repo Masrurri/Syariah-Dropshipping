@@ -13,11 +13,8 @@ class TransaksiController extends Controller
     {
         if (auth()->user()->role == "supplier") {
             $transactions = Transaksi::where('toko_id', auth()->user()->supplier->toko->id)->orderByDesc('created_at')->get();
-            // $transactions = Transaksi::where('toko_id', auth()->user()->supplier->toko->id)->sum('total_harga');
-            // $transactions = Transaksi::select('total_harga')->where('toko_id', auth()->user()->supplier->toko->id)->get();
-
         } else {
-            $transactions = Transaksi::where('dropshipper_id', auth()->user()->dropshipper->id)->orderByDesc('created_at')->first();
+            $transactions = Transaksi::where('dropshipper_id', auth()->user()->dropshipper->id)->orderByDesc('created_at')->get();
         }
         // return $transactions;
         return view('Transaksi-page', [

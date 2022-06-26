@@ -23,7 +23,7 @@
                       <a><img src="assets/img/drp2.png" alt="" style="width: 60%" class="mt-2"></a>
                   </div>
                   <div class="col-8" style="padding: 0.8rem 0rem;">
-                        <div class="cHead">Assalamualaikum, {{ strtok(auth()->user()->supplier->nama_lengkap, ' ') }}!</div>
+                        <div class="cHead" style="font-size:20px">Assalamualaikum, {{ strtok(auth()->user()->supplier->nama_lengkap, ' ') }}!</div>
                         <div class="cBody" style="font-size:14px">Anda terdaftar sebagai Supplier <br> Sejak <strong> {{ strtok(auth()->user()->supplier->created_at, ' ') }}!</strong> </div>
                   </div>
                   <img src="assets/img/stars.png" alt="" style="position: absolute; margin-left:23rem; width:9rem">
@@ -69,7 +69,7 @@
                       <a><img src="assets/img/drp2.png" alt="" style="width: 60%"></a>
                   </div>
                   <div class="col-10" style="padding: 0.8rem 0rem;">
-                        <div class="cHead">Assalamualaikum, {{ strtok(auth()->user()->dropshipper->nama_lengkap, ' ') }}!</div>
+                        <div class="cHead" style="font-size:20px">Assalamualaikum, {{ strtok(auth()->user()->dropshipper->nama_lengkap, ' ') }}!</div>
                         <div class="cBody" style="font-size:14px">Anda terdaftar sebagai Dropshipper <br> Sejak <strong> {{ strtok(auth()->user()->dropshipper->created_at, ' ') }}!</strong> </div>
                   </div>
               </div>

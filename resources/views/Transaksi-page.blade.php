@@ -3,10 +3,10 @@
 @section('container')
     <div class="container">
         <div class="row ">
-            <div class="col card mt-3 tblMax p-0">
+            <div class="col card mt-3 tblMax cardTbl p-0 scrl">
               @if($transactions->isNotEmpty())
                 <table class="table table-hover " style="font-size: 14px;">
-                    <thead class="ms-3" style="background-color:#40C18D; color:#176E23; position:sticky; top:0; color:white">
+                    <thead class="ms-3 tblHead">
                       <tr>
                         <th scope="col" style="width: 10rem; text-align: center">Tanggal</th>
                         <th scope="col" style="width: 4rem">No Order</th>
@@ -21,7 +21,7 @@
                     <tbody style="" >
                       @foreach ($transactions as $item)
                           <tr>
-                            <th style="text-align: center">{{ strtok($item->created_at, ' ') }}</th>
+                            <th style="text-align: center" >{{ strtok($item->created_at, ' ') }}</th>
                             <td>{{$item->no_order}}</td>
                             <td>{{$item->nama_produk}}</td>
                             
@@ -29,7 +29,7 @@
                             <td style="text-align: center" > 
                               @if($item->no_resi == "") <button disabled class="btn-sm btnYellow">Belum Diproses</button> 
                               @elseif($item->status_pembayaran == "Ditolak") <button disabled class="btn-sm btnRed">{{$item->status_pembayaran}}</button>  
-                              @else <button disabled class="btn-sm btnGreen ">{{$item->no_resi}} </button>
+                              @else <button disabled class="btn-sm btnBlue ">{{$item->no_resi}} </button>
                               @endif 
                             </td>
                             <td style="text-align: center" > 
@@ -50,7 +50,7 @@
                     </tbody>
                 </table>
               @else
-                <strong style="font-size: 24px; color:#E0ECFF">Tidak ada transaksi</strong> 
+                <strong class="ms-5 py-4" style="font-size: 24px; color:#E0ECFF">Tidak ada transaksi</strong> 
               @endif
             
             </div>
