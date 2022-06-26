@@ -44,30 +44,6 @@
         .modal1:hover {
             color: #FF8A00;
         }
-
-        .btn-prm {
-            background-color: #056AD3;
-            width: 6rem;
-            color: #FFFFFF;
-            font-weight: 600;
-        }
-
-        .btn-prm:hover {
-            color: #FFFFFF;
-            background-color: #034AB6;
-        }
-
-        .btn-scn {
-            background-color: #E0ECFF;
-            width: 6rem;
-            color: #056AD3;
-            font-weight: 600;
-        }
-
-        .btn-scn:hover {
-            border: 1px solid #056AD3;
-            color: #056AD3;
-        }
     </style>
 
     <title>Syariah Dropshipping</title>
@@ -299,32 +275,32 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel" style="width: 25rem; font-weight:700">Ketentuan Syariah Dropshipping</h5>
                 </div>
-                <div class="modal-body" style="color:black">
+                <div class="modal-body scrl" style="color:black">
                     <span style="font-weight: 600">Akad Wakalah</span>
-                    <ol>
+                    <ol style="width:90%">
                         <li>Supplier bersedia memberikan izin/wewenang kepada Dropshipper sebagai wakil untuk memasarkan dan menjual produk milik Supplier.</li>
                         <li>Supplier menjamin bahwa barang yang dijualnya adalah milik sendiri dan tidak menjual barang-barang yang dilarang secara hukum dan agama.</li>
                         <li>Dropshipper selaku wakil bersedia memasarkan, menjual dan melakukan pembayaran sesuai dengan ketentuan dari Supplier.</li>
                         <li>Dropshipper harus memasarkan produk sesuai dengan harga yang disarankan oleh Supplier, untuk menjaga harga pasar.</li>
                     </ol>
                     <span style="font-weight: 600">Dropshipper</span>
-                    <ol>
+                    <ol style="width:90%">
                         <li>Dropshipper bertanggung jawab untuk membaca, memahami, dan menyetujui informasi/deskripsi keseluruhan produk yang telah dituliskan oleh Supplier sebelum melakukan pembelian produk.</li>
                         <li>Dropshipper wajib melakukan transaksi melalui prosedur yang telah ditetapkan.</li>
                         <li>Dropshipper wajib membayar lunas sesuai dengan jumlah invoice yang didapat tanpa cicilan untuk menghindari riba.</li>
                     </ol>
                     <span style="font-weight: 600">Supplier</span>
-                    <ol>
+                    <ol style="width:90%">
                         <li>Supplier bertanggung jawab untuk mengirimkan barang sesuai dengan data yang diinputkan oleh Dropshipper.</li>
                         <li>Supplier bersedia menyanggupi untuk melayani pembelian Produk tanpa minimal order.</li>
                         <li>Supplier bersedia untuk menjamin ketersediaan stok barang miliknya.</li>
                     </ol>
                     <span style="font-weight: 600">Kebijakan Kerahasiaan Informasi</span>
-                    <ol>
+                    <ol style="width:90%">
                         <li>Kami berkomitmen untuk memastikan bahwa informasi yang Anda berikan kepada Kami aman dan tidak dapat digunakan oleh pihak-pihak yang tidak bertanggungjawab.</li>
                         <li>Dropshipper dan Supplier menjamin bahwa informasi dan identitas yang diberikan saat membuat akun merupakan informasi pribadi milik sendiri dan bukan informasi/identitas fiktif.</li>
                         <li>Apabila terdapat perselisihan atau perbedaan pendapat antara Supplier dan Dropshipper, kami akan menggunakan informasi yang telah didaftarkan untuk menyelesaikan permasalahan yang terjadi antara kedua belah pihak berdasarkan hukum yang berlaku.</li>
-                        <li>Kami memiliki hak untuk menginvestigasi dan menuntut hak Kami untuk setiap pelanggaran atas Perjanjian ini sepanjang yang dimungkinkan dan diperkenankan oleh Hukum. Dengan ini anda mengakui bahwa Kami memiliki hak untuk memonitor akses penggunaan Syariah Dropshipping untuk memastikan kepatuhan dengan syarat ketentuan ini, atau untuk mematuhi peraturan yang berlaku atau perintah atau persyaratan dari pengadilan, lembaga administratif atau badan pemerintahan lainnya.</li>
+                        <li>Dengan ini anda mengakui bahwa Kami memiliki hak untuk memonitor akses penggunaan Syariah Dropshipping untuk memastikan kepatuhan dengan syarat ketentuan ini, atau untuk mematuhi peraturan yang berlaku atau perintah atau persyaratan dari pengadilan, lembaga administratif atau badan pemerintahan lainnya.</li>
                     </ol>
                 </div>
                 <div class="modal-footer">

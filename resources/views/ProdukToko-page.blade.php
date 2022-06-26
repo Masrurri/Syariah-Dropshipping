@@ -33,7 +33,8 @@
                             </div>
                          </div>
                         <div class="mt-1 row row-cols-sm-4 g-3" style="">
-                          @foreach ($toko->produks as $produk)
+                            @if($toko->produks->isNotEmpty() )
+                            @foreach ($toko->produks as $produk)
                           @if($produk->stok > 0)
                               <div class="col">
                                 <div class="card" style="height: 24rem">
@@ -63,6 +64,10 @@
                               </div>
                             @endif
                           @endforeach
+                            @else
+                            <strong class="" style="font-size: 24px; color:#E0ECFF">Produk Kosong</strong> 
+                            @endif
+                          
         
                         </div>
                     </div>
