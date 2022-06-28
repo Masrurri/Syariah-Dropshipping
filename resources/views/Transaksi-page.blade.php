@@ -27,9 +27,13 @@
                             
                             <td>Rp{{number_format($item->total_harga) }}</td>
                             <td style="text-align: center" > 
-                              @if($item->no_resi == "") <button disabled class="btn-sm btnYellow">Belum Diproses</button> 
+                              @if($item->no_resi == "" and $item->status_pembayaran == "Menunggu Konfirmasi") <button disabled class="btn-sm btnYellow">Belum Diproses</button> 
                               @elseif($item->status_pembayaran == "Ditolak") <button disabled class="btn-sm btnRed">{{$item->status_pembayaran}}</button>  
-                              @else <button disabled class="btn-sm btnBlue ">{{$item->no_resi}} </button>
+                              @elseif($item->no_resi == "" and $item->status_pembayaran == "Diterima") <button disabled class="btn-sm btnYellow">Belum Diproses</button>
+                              @elseif($item->status_pembayaran == "Tidak Ada")
+                              <button disabled class="btn-sm btnYellow">Belum Diproses</button>
+                              @else
+                              <button disabled class="btn-sm btnBlue ">{{$item->no_resi}} </button>
                               @endif 
                             </td>
                             <td style="text-align: center" > 

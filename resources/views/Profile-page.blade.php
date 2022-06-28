@@ -11,14 +11,14 @@
             @if(session()->has('success'))
                 <span class="col-6 alert alert-success alert-dismissible fade show py-2 px-4 my-0 mx-3" role="alert" style="font-size:14px; font-weight:600; float:right">  
                     {{ session('success') }}
-                <button type="button" class="btn-sm btn" data-bs-dismiss="alert" aria-label="Close" style="margin-top:-0.1rem; padding:0%; float: right;"><i class="fa fa-times" aria-hidden="true"></i></button>
+                <button type="button" class="btn-sm btn" data-bs-dismiss="alert" aria-label="Close" style="margin-top:-0.1rem; padding:0%; float: right;"><i class="bi bi-x-lg" style="font-weight: 700"></i></button>
                 </span>
             @endif
 
             @if(session()->has('loginError'))
             <span class="col-6 alert alert-danger alert-dismissible fade show py-2 px-4 my-0 mx-3" role="alert" style="font-size:14px; font-weight:600; float:right">  
                 {{ session('loginError') }}
-                <button type="button" class="btn-sm btn" data-bs-dismiss="alert" aria-label="Close" style="margin-top:-0.1rem; padding:0%; float: right;"><i class="fa fa-times" aria-hidden="true"></i></button>
+                <button type="button" class="btn-sm btn" data-bs-dismiss="alert" aria-label="Close" style="margin-top:-0.1rem; padding:0%; float: right;"><i class="bi bi-x-lg" style="font-weight: 700"></i></button>
             </span>
             @endif
         </div>
@@ -44,15 +44,19 @@
                                             <input type="text" name="nama_lengkap" class="form-control form-control-sm @error('nama_lengkap') is-invalid @enderror" id="nama-lengkap" value="{{ $nama_lengkap }}" placeholder="Kosong" required>
                                         </div>
                                         <div class="col-6">
-                                            <label id="email-label" for="email" class="form-label" style="font-weight:600; font-size: 14px">Email</label>
-                                            <input type="text" name="email" class="form-control form-control-sm @error('email') is-invalid @enderror" id="email" value="{{ $email }}" placeholder="Kosong" required>
+                                            <label id="username-label" for="username" class="form-label" style="font-weight:600; font-size: 14px">Username</label>
+                                            <input type="text" name="username" class="form-control form-control-sm @error('username') is-invalid @enderror" id="username" value="{{ $username }}" placeholder="Kosong" required>
                                         </div> 
                                     </div>
                                     <div class="row mt-2">
                                         <div class="col-6">
                                             <label id="telepon-label" for="telepon" class="form-label" style="font-weight:600; font-size: 14px">No Handphone</label>
                                             <input type="text" name="no_handphone" class="form-control form-control-sm @error('no_handphone') is-invalid @enderror" id="telepon" value="{{ $no_handphone }}" placeholder="Kosong" required>
-                                        </div> 
+                                        </div>
+                                        <div class="col-6">
+                                            <label id="email-label" for="email" class="form-label" style="font-weight:600; font-size: 14px">Email</label>
+                                            <input type="text" name="email" class="form-control form-control-sm @error('email') is-invalid @enderror" id="email" value="{{ $email }}" placeholder="Kosong" required>
+                                        </div>  
                                     </div>
                                     <div class="row mt-4">
                                         <div class="col-8">

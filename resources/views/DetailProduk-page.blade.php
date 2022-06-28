@@ -105,15 +105,49 @@
                     <div class="col-9 ps-5">
                         <span class="card-text row mt-3" style="margin-left:-1.5rem">
                             @if(auth()->user()->role == "supplier")
-                                @if(auth()->user()->id == $produk->toko->supplier->user->id)
+                            @if(auth()->user()->id == $produk->toko->supplier->user->id)
+                            <button type="button" class="ms-3 btn btn-sm btn-outline-danger" style="width: 6rem" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Hapus</button>
+                            <a href="/edit-produk/{{$produk->id}}" class="btn btn-sm btn-prm mx-2" style="width: 8rem">Edit Produk</a>  
+                                <!-- Modal -->
+                                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content px-2">
+                                        
+                                        <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel"><strong>Konfirmasi</strong></h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                        Apakah anda yakin ingin menghapus <strong>{{$produk->nama_produk}}</strong> ?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <form action="/assets/{{$produk->id}}" method="post">
+                                                @method('delete')
+                                                @csrf
+                                                
+                                            </form> 
+                                            
+                                            <form action="/delete-produk/{{$produk->id}}" method="post">
+                                                @method('delete')
+                                                @csrf
+                                                <button type="button" class="mx-2 btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                                <button type="submit" class="btn btn-danger">Hapus</button>
+                                            </form>
+                                             
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                                @endif  
+                                {{-- @if(auth()->user()->id == $produk->toko->supplier->user->id)
                                     <form action="/delete-produk/{{$produk->id}}" method="post">
                                         @method('delete')
                                         @csrf
                                         <button type="submit" onclick="return confirm('Apakah anda yakin ingin menghapus {{$produk->nama_produk}}')" class="btn btn-sm btn-red">Hapus</button>
                                         <a href="/edit-produk/{{$produk->id}}" class="btn btn-sm btn-prm mx-2" style="width: 8rem">Edit Produk</a>
                                     </form>
-                                @endif
-                            <!-- Button trigger modal -->
+                                @endif --}}
+                            
                             @else
                                 <a href="/checkout/{{$produk->id}}" class="btn btn-sm btn-prm" style="margin-left: 0.8rem">Beli</a>
                             @endif

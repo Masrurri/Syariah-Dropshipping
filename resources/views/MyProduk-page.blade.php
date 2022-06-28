@@ -9,15 +9,15 @@
                 <div class="col-10 position-fixed">
                     <a href="@if(auth()->user()->supplier->toko->status_akun == 'Aktif') /tambah-produk @else # @endif" type="button" class="btn btn-sm btn-scn" style="width:10rem;">Tambah Produk</a>
                     @if(session()->has('success'))
-                        <span class="col-8 alert alert-success alert-dismissible fade show py-2 px-4" role="alert" style="font-size:14px; font-weight:600; float:right">  
+                        <span class="col-4 alert alert-success alert-dismissible fade show py-2 px-4" role="alert" style="font-size:14px; font-weight:600; float:right">  
                             {{ session('success') }}
-                        <button type="button" class="btn-sm btn" data-bs-dismiss="alert" aria-label="Close" style="margin-top:-0.1rem; padding:0%; float: right;"><i class="fa fa-times" aria-hidden="true"></i></button>
+                        <button type="button" class="btn-sm btn" data-bs-dismiss="alert" aria-label="Close" style="margin-top:-0.1rem; padding:0%; float: right;"><i class="bi bi-x-lg" style="font-weight: 700"></i></button>
                         </span>
                     @endif
                     @if(session()->has('loginError'))
-                        <span class="col-8 alert alert-danger alert-dismissible fade show py-2 px-4" role="alert" style="font-size:14px; font-weight:600; float:right">  
+                        <span class="col-4 alert alert-danger alert-dismissible fade show py-2 px-4" role="alert" style="font-size:14px; font-weight:600; float:right">  
                             {{ session('loginError') }}
-                        <button type="button" class="btn-sm btn" data-bs-dismiss="alert" aria-label="Close" style="margin-top:-0.1rem; padding:0%; float: right;"><i class="fa fa-times" aria-hidden="true"></i></button>
+                        <button type="button" class="btn-sm btn" data-bs-dismiss="alert" aria-label="Close" style="margin-top:-0.1rem; padding:0%; float: right;"><i class="bi bi-x-lg" style="font-weight: 700"></i></button>
                         </span>
                     @endif
                 </div>

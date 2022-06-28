@@ -4,8 +4,10 @@
             <ul class="navbar-nav me-auto">
                 <li class="nav-item"><a class="nav-link {{ ($title === "Dashboard")? 'active' : '' }} " href="/dashboard">Dashboard</a></li>
                 <li class="nav-item"><a class="nav-link {{ ($title === "Produk" or $title === "My Produk")? 'active' : '' }} " href="@if(auth()->user()->role == "supplier")@if(auth()->user()->supplier->toko->status_akun == "Belum aktif")/edit-toko/{{ auth()->user()->supplier->toko->id }}  @else /myproduk @endif @else {{ route('produk', array('filter' => 'Semua Produk'))}} @endif">Produk</a></li>
+                @if(auth()->user()->role == "dropshipper")
                 <li class="nav-item"><a class="nav-link {{ ($title === "Supplier")? 'active' : '' }} " href="@if(auth()->user()->role == "supplier")@if(auth()->user()->supplier->toko->status_akun == "Belum aktif")/edit-toko/{{ auth()->user()->supplier->toko->id }}  @else /supplier @endif @else /supplier @endif">Supplier</a></li>
-                <li class="nav-item"><a class="nav-link {{ ($title === "Transaksi")? 'active' : '' }} " href="@if(auth()->user()->role == "supplier")@if(auth()->user()->supplier->toko->status_akun == "Belum aktif")/edit-toko/{{ auth()->user()->supplier->toko->id }}  @else /transaksi @endif @else /transaksi @endif">Transaksi</a></li>
+                @endif
+                <li class="nav-item"><a class="nav-link {{ ($title === "Transaksi")? 'active' : '' }} " href="@if(auth()->user()->role == "supplier")@if(auth()->user()->supplier->toko->status_akun == "Belum aktif")/edit-toko/{{ auth()->user()->supplier->toko->id }}  @else /transaksi/Tanggal @endif @else /transaksi/Tanggal @endif">Transaksi</a></li>
             </ul>
             
             <ul class="navbar-nav ms-auto">

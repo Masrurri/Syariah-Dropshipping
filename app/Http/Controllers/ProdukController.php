@@ -222,7 +222,7 @@ class ProdukController extends Controller
             'status_pembayaran' => "Tidak Ada",
             'dropshipper_id' => auth()->user()->dropshipper->id,
             'toko_id' => $produk->toko->id,
-            'no_resi' => "",
+            'no_resi' => null,
         ];
 
         $transaksi = Transaksi::create($data);

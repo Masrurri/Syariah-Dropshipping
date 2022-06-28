@@ -1,0 +1,136 @@
+
+@media (min-width:320px)  { 
+    
+    .container{
+        display: none;
+    }
+
+    .hides{
+        display: none;
+    }
+    .d-flex{
+        display: none !important;
+    }
+    .modalAlert{
+        margin-top: 4rem;
+        height: 60vh;
+        padding-top: 0rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        margin-left: 3rem;
+        margin-right: 3rem;
+    }
+    .h3ad{
+        font-size: 3vh !important;
+    }
+    .p4r{
+        font-size: 1.8vh!important;
+    }
+    .imgs{
+        width: 60% !important;
+    }
+}
+@media (min-width:481px)  { 
+    
+    .container{
+        display: none;
+    }
+
+    .hides{
+        display: none;
+    }
+    .d-flex{
+        display: none !important;
+    }
+    .modalAlert{
+        margin-top: 5rem;
+        height: 60vh;
+        padding-top: 0rem;
+        padding-left: 3rem;
+        padding-right: 3rem;
+        margin-left: 3rem;
+    }
+    .h3ad{
+        font-size: 4vh !important;
+    }
+    .p4r{
+        font-size: 2.3vh!important;
+    }
+    .imgs{
+        width: 30% !important;
+    }
+}
+@media (min-width:641px)  { 
+    .container{
+        display: none;
+    }
+
+    .hides{
+        display: none;
+    }
+    .d-flex{
+        display: none !important;
+    }
+    .modalAlert{
+        margin-top: 5rem;
+        height: 60vh;
+        padding-top: 0rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    .h3ad{
+        font-size: 4vh !important;
+    }
+    .p4r{
+        font-size: 2.8vh!important;
+    }
+    .imgs{
+        width: 30% !important;
+    }
+}
+@media (min-width:961px)  {
+    .container{
+        display: none;
+    }
+
+    .hides{
+        display: none;
+    }
+    .d-flex{
+        display: none !important;
+    }
+    .modalAlert{
+        margin-top: 5rem;
+        height: 60vh;
+        padding-top: 0rem;
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+    .h3ad{
+        font-size: 4vh !important;
+    }
+    .p4r{
+        font-size: 3vh!important;
+    }
+    .imgs{
+        width: 30% !important;
+    }
+
+    }
+
+ @media (min-width:1025px) { 
+    .mdls{
+        display: none !important;
+    }
+    .hides{
+        display: block !important;
+    }
+    .d-flex{
+        display: block !important;
+    }
+    .modalAlert{
+        display: none;
+    }
+    
+
+}

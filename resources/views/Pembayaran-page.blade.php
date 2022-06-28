@@ -36,7 +36,7 @@
                 </div>
 
                 <div class="">
-                    <a href="/transaksi" type="button" class="btn btn-sm btn-prm" style="width:8rem;">Selesai</a>
+                    <a href="/transaksi/Tanggal" type="button" class="btn btn-sm btn-prm" style="width:8rem;">Selesai</a>
                 </div>
             </div>
             <div class="col-6">

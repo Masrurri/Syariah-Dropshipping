@@ -75,27 +75,10 @@
               </div>
             </div>
           @endif
-          {{-- <div class="col cards">
-                <div class="row">
-                    <div class="col-9" style="padding: 0.8rem 0rem;">
-                        <div class="cHead">Transaksi</div>
-                        <div class="row" style="font-weight: 600;">
-                            <div class="col-6" style="color: #2FB084">
-                                <div style="font-size:24px;">{{$on_process}}</div>
-                                <div >Diproses</div>
-                            </div>
-                            <div class="col-6" style="color: #FF2525">
-                                <div style="font-size:24px;">{{$not_process}}</div>
-                                <div >Belum Diproses</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-          </div> --}}
         </div>
           <div class="row mt-1">
             @if(auth()->user()->role == "supplier")
-            <a class="col cards cHover" style="margin-right: 2rem; background-color:#E2EDF9; color: #3C4A57; border: solid 0.1ch #3C4B5E">
+            <a href="/transaksi/Tanggal" class="col cards cHover" style="margin-right: 2rem; background-color:#E2EDF9; color: #3C4A57; border: solid 0.1ch #3C4B5E">
               <div class="row">
                   <div class="col-9" style="padding: 0.8rem 0rem;">
                     <div class="fw-bold" style="font-size: 16px">Total Seluruh</div>
@@ -112,7 +95,7 @@
               </div>
             </a>
             @else
-            <a class="col cards cHover" style="margin-right: 2rem; background-color:#E2EDF9; color: #3C4A57; border: solid 0.1ch #3C4B5E">
+            <a href="/transaksi/Tanggal" class="col cards cHover" style="margin-right: 2rem; background-color:#E2EDF9; color: #3C4A57; border: solid 0.1ch #3C4B5E">
               <div class="row">
                   <div class="col-9" style="padding: 0.8rem 0rem;">
                     <div class="fw-bold" style="font-size: 16px">Total Seluruh</div>
@@ -130,7 +113,7 @@
             </a>
             @endif
             
-            <a class="col cards cHover" style="margin-right: 2rem; background-color:#DFECE0; color:#3C4A57; border: solid 0.1ch #3C4B5E">
+            <a href="/transaksi/Diterima" class="col cards cHover" style="margin-right: 2rem; background-color:#DFECE0; color:#3C4A57; border: solid 0.1ch #3C4B5E">
               <div class="row">
                   <div class="col-9" style="padding: 0.5rem 0rem;">
                     <div class="fw-bold" style="font-size: 16px">Transaksi</div>
@@ -146,7 +129,7 @@
                   </div>
               </div>
             </a>
-            <a class="col cards cHover" style="margin-right: 2rem; background-color:#FEEDD8; color:#3C4B5E; border: solid 0.1ch #3C4B5E">
+            <a href="/transaksi/BelumDiproses" class="col cards cHover" style="margin-right: 2rem; background-color:#FEEDD8; color:#3C4B5E; border: solid 0.1ch #3C4B5E">
               <div class="row">
                   <div class="col-9" style="padding: 0.5rem 0rem;">
                       <div class="fw-bold" style="font-size: 16px">Transaksi</div>
@@ -162,7 +145,7 @@
                   </div>
               </div>
             </a>
-            <a class="col cards cHover" style="margin-right: 2rem; background-color:#fdddf8; color:#3C4B5E; border: solid 0.1ch #3C4B5E">
+            <a href="/transaksi/Ditolak" class="col cards cHover" style="margin-right: 2rem; background-color:#fdddf8; color:#3C4B5E; border: solid 0.1ch #3C4B5E">
               <div class="row">
                   <div class="col-9" style="padding: 0.5rem 0rem;">
                       <div class="fw-bold" style="font-size: 16px">Transaksi</div>
@@ -194,7 +177,7 @@
                 </div>
             </div>
           </a>
-          <a class="col cards cHover" style="margin-right: 2rem; background-color:#E2EDF9; color: #3C4A57; border: solid 0.1ch #3C4B5E">
+          <a href="/myproduk" class="col cards cHover" style="margin-right: 2rem; background-color:#E2EDF9; color: #3C4A57; border: solid 0.1ch #3C4B5E">
             <div class="row">
                 <div class="col-9" style="padding: 0.8rem 0rem;">
                   <div class="fw-bold" style="font-size: 16px">Total Produk</div>

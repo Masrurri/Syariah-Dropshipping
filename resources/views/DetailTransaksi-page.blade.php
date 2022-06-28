@@ -37,7 +37,7 @@
                             </div>
                         @endif
                     @endif
-                @else
+                @elseif( (auth()->user()->role == "dropshipper"))
                     @if ($transaksi->status_pembayaran == "Tidak Ada")
                         <div class="col-8 alert alert-warning px-3 py-2 mt-3" role="alert" style="font-size:14px">
                             Segera lakukan pembayaran anda ke rekening berikut <br> 
@@ -152,11 +152,11 @@
                             @endif
                             
                             <div class="form-check form-check-inline ms-2" style="font-weight: 400; color:black" @if(auth()->user()->role == "dropshipper" or $transaksi->status_pembayaran != "Menunggu Konfirmasi" or auth()->user()->role == "admin") hidden @endif>
-                                <input onchange="isChange()" @if($transaksi->status_pembayaran == "Diterima") checked @endif class="form-check-input" type="radio" name="status_pembayaran" id="inlineRadio1" value="Diterima" @if(auth()->user()->role == "dropshipper") disabled @endif @if(auth()->user()->role == "admin") disabled @endif>
+                                <input onchange="isChange(); isDitolak();" @if($transaksi->status_pembayaran == "Diterima") checked @endif class="form-check-input" type="radio" name="status_pembayaran" id="diterima" value="Diterima" @if(auth()->user()->role == "dropshipper") disabled @endif @if(auth()->user()->role == "admin") disabled @endif>
                                 <label class="form-check-label" for="inlineRadio1">Diterima</label>
                             </div>
                             <div class="form-check form-check-inline" style="font-weight: 400; color:black" @if(auth()->user()->role == "dropshipper" or $transaksi->status_pembayaran != "Menunggu Konfirmasi" or auth()->user()->role == "admin") hidden @endif>
-                                <input onchange="isChange()" @if($transaksi->status_pembayaran == "Ditolak") checked @endif class="form-check-input" type="radio" name="status_pembayaran" id="inlineRadio2" value="Ditolak" @if(auth()->user()->role == "dropshipper") disabled @endif @if(auth()->user()->role == "admin") disabled @endif>
+                                <input onchange="isChange(); isDitolak();" @if($transaksi->status_pembayaran == "Ditolak") checked @endif class="form-check-input" type="radio" name="status_pembayaran" id="ditolak" value="Ditolak" @if(auth()->user()->role == "dropshipper") disabled @endif @if(auth()->user()->role == "admin") disabled @endif>
                                 <label class="form-check-label" for="inlineRadio2">Ditolak</label>
                             </div>
                         </div>
@@ -223,7 +223,7 @@
                     {{-- new line --}}
                     <div class="row mt-2" style="font-weight: 600" @if(auth()->user()->role == "admin") hidden @endif>
                         <div class="col-4 ms-2 mt-4">
-                            <a href="/transaksi" type="button" class="btn btn-sm btn-scn" style="margin-right: 1rem;">Batal</a>
+                            <a href="/transaksi/Tanggal" type="button" class="btn btn-sm btn-scn" style="margin-right: 1rem;">Batal</a>
                             <button type="submit" class="btn btn-sm btn-prm" id="simpan" disabled>Simpan</button>
                         </div>
                     </div>
@@ -239,6 +239,13 @@
         // });
         function isChange(){
             document.getElementById("simpan").disabled = false;
+        }
+        function isDitolak(){
+            if (document.getElementById("ditolak").checked == true) {
+                document.getElementById("no-resi-pengiriman").value = "Ditolak";
+            } else {
+                document.getElementById("no-resi-pengiriman").value = "";
+            }
         }
     </script>
 @endsection

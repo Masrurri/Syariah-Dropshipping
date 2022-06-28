@@ -33,7 +33,7 @@
                                         <div style="font-weight: 600">{{$toko->nama_toko}}</div>
                                         <div class="infoToko" >{{$toko->deskripsi}}</div>
                                         <div class="infoToko" >{{$toko->kota}}</div>
-                                        <div class="infoToko" >+{{$toko->supplier->user->no_handphone}}</div>
+                                        <div class="infoToko" >{{$toko->supplier->user->no_handphone}}</div>
                                         <img src="assets/img/spl.png" alt="" style="width: 15%; margin-top:0rem; float:right">
                                     </a>
                                 @endif

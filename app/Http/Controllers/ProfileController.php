@@ -15,7 +15,8 @@ class ProfileController extends Controller
             "title" => "Profile",
             "nama_lengkap" => auth()->user()->nama_lengkap,
             "email" => auth()->user()->email,
-            "no_handphone" => auth()->user()->no_handphone
+            "no_handphone" => auth()->user()->no_handphone,
+            "username" => auth()->user()->username
         ];
 
         return view('Profile-page', $data);
@@ -27,6 +28,7 @@ class ProfileController extends Controller
             'nama_lengkap' => 'required',
             'no_handphone' => 'required',
             'email' => ['required', 'email:dns'],
+            'username' => 'required',
         ]);
 
         $user = User::find(auth()->user()->id);

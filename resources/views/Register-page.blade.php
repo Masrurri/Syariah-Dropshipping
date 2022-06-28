@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Philosopher:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <link href="/assets/css/style.css" rel="stylesheet">
     <style>
@@ -135,7 +135,7 @@
                                         <div class="row mt-2">
                                             <div class="col-12">
                                                 <label for="no-handphone" class="form-label">Nomor Handphone</label>
-                                                <input type="text" class="form-control form-control-sm @error('no_handphone') is-invalid @enderror" name="no_handphone" id="no-handphone" required value="{{ old('no_handphone') }}" placeholder="Nomor Handphone">
+                                                <input type="text" maxlength="13" class="form-control form-control-sm @error('no_handphone') is-invalid @enderror" name="no_handphone" id="no-handphone" required value="{{ old('no_handphone') }}" placeholder="Nomor Handphone">
                                                 @error('no_handphone')
                                                 <div class="invalid-feedback">
                                                     Nomor handphone sudah terdaftar

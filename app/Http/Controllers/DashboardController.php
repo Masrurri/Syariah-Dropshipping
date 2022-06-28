@@ -24,7 +24,7 @@ class DashboardController extends Controller
             $allProduk = count(Produk::where('toko_id', auth()->user()->supplier->toko->id)->get());
             $ditolak = count(Transaksi::where('toko_id', auth()->user()->supplier->toko->id)->where('status_pembayaran', 'Ditolak')->orderByDesc('created_at')->get());
             $on_process = count(Transaksi::where('toko_id', auth()->user()->supplier->toko->id)->where('status_pembayaran', 'Diterima')->orderByDesc('created_at')->get());
-            $not_process = count(Transaksi::where('toko_id', auth()->user()->supplier->toko->id)->where('status_pembayaran', '!=', 'Diterima')->where('status_pembayaran', '!=', 'Ditolak')->orderByDesc('created_at')->get());
+            $not_process = count(Transaksi::where('toko_id', auth()->user()->supplier->toko->id)->where('status_pembayaran', 'Menunggu Konfirmasi')->orWhere('no_resi', 'Ditolak')->orderByDesc('created_at')->get());
         } else {
             $allSell = "Tidak ada";
             $allSend = count(Transaksi::where('dropshipper_id', auth()->user()->dropshipper->id)->where('no_resi', '!=', '')->get());

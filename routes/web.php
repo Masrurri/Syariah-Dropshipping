@@ -52,7 +52,7 @@ Route::middleware(['auth'])->group(function () {
     // Route::get('/produk', [ProdukController::class, "index"]);
     Route::get('/produk/{filter?}', [ProdukController::class, "index"])->name('produk');
 
-    Route::get('/transaksi', [TransaksiController::class, "index"]);
+    Route::get('/transaksi/{sortBY}', [TransaksiController::class, "index"]);
 
     Route::get('/detail-transaksi/{transaksi}', [TransaksiController::class, "detail_transaksi"]);
     Route::put('/update-transaksi/{transaksi}', [TransaksiController::class, "update"]);

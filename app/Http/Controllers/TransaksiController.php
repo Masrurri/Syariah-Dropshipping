@@ -9,17 +9,34 @@ use Illuminate\Http\Request;
 
 class TransaksiController extends Controller
 {
-    public function index()
+    public function index($sortBY = "Tanggal")
     {
         if (auth()->user()->role == "supplier") {
-            $transactions = Transaksi::where('toko_id', auth()->user()->supplier->toko->id)->orderByDesc('created_at')->get();
+            if ($sortBY == "Tanggal") {
+                $transactions = Transaksi::where('toko_id', auth()->user()->supplier->toko->id)->orderByDesc('created_at')->get();
+            } else if ($sortBY == "Ditolak") {
+                $transactions = Transaksi::where('toko_id', auth()->user()->supplier->toko->id)->orderByRaw("FIELD(status_pembayaran , 'Ditolak') DESC")->get();
+            } else if ($sortBY == "Diterima") {
+                $transactions = Transaksi::where('toko_id', auth()->user()->supplier->toko->id)->orderByRaw("FIELD(status_pembayaran , 'Diterima', 'Tidak Ada', 'Ditolak', 'Menunggu Konfirmasi') ASC")->get();
+            } else if ($sortBY == "BelumDiproses") {
+                $transactions = Transaksi::where('toko_id', auth()->user()->supplier->toko->id)->orderByRaw("ISNULL(no_resi) DESC")->get();
+            }
         } else {
-            $transactions = Transaksi::where('dropshipper_id', auth()->user()->dropshipper->id)->orderByDesc('created_at')->get();
+            if ($sortBY == "Tanggal") {
+                $transactions = Transaksi::where('dropshipper_id', auth()->user()->dropshipper->id)->orderByDesc('created_at')->get();
+            } else if ($sortBY == "Ditolak") {
+                $transactions = Transaksi::where('dropshipper_id', auth()->user()->dropshipper->id)->orderByRaw("FIELD(status_pembayaran , 'Ditolak') DESC")->get();
+            } else if ($sortBY == "Diterima") {
+                $transactions = Transaksi::where('dropshipper_id', auth()->user()->dropshipper->id)->orderByRaw("FIELD(status_pembayaran , 'Diterima','Tidak Ada', 'Ditolak', 'Menunggu Konfirmasi') ASC")->get();
+            } else if ($sortBY == "BelumDiproses") {
+                $transactions = Transaksi::where('dropshipper_id', auth()->user()->dropshipper->id)->orderByRaw("ISNULL(no_resi) DESC")->get();
+            }
         }
         // return $transactions;
         return view('Transaksi-page', [
             "title" => "Transaksi",
             "transactions" => $transactions,
+            "sortBY" => $sortBY
         ]);
     }
 
