@@ -37,7 +37,7 @@
                             @foreach ($toko->produks as $produk)
                           @if($produk->stok > 0)
                               <div class="col">
-                                <div class="card" style="height: 24rem">
+                                <div class="card" style="height: 26rem">
                                     <img src="{{url($produk->gambar_utama)}}" class="card-img-top" alt="..." style="object-fit: cover; min-height:30vh; max-height:30vh ">
                                     <div class="card-body">
                                         <h5 class="card-title" style="font-size: 14px; text-overflow:ellipsis; max-height:2rem; overflow-y:hidden;">{{$produk->nama_produk}}</h5>

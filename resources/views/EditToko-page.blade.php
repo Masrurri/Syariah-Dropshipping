@@ -41,7 +41,7 @@
                             <div class="@if($toko->status_akun == "Aktif")col-2 @else col-3 @endif">
                                 
                                     <label id="identitas1-label" for="identitas1" class="form-label" style="font-weight:600">Kartu Identitas</label>
-                                    <img src="{{url($toko->kartu_identitas)}}" alt="..." style="height: 20vh; object-fit:cover; max-width:10vw; min-width:10vw; border-radius:5px;">
+                                    <img src="{{url($toko->kartu_identitas)}}" alt="..." style="height: 20vh; object-fit:cover; width:15vw; min-width:10vw; border-radius:5px;">
                                     <input id="identitas1" class="mt-2 form-control form-control-sm @error('kartu_identitas') is-invalid @enderror" name="kartu_identitas" type="file" accept="image/jpeg, image/jpg, image/png" value="{{$toko->kartu_identitas}}" required>
                                     <div class="form-text" style="font-size: 13px">
                                         *Unggah kartu identitas anda dalam format foto KTP/SIM (maksimal 2 MB)
@@ -56,10 +56,10 @@
                             <div class="@if($toko->status_akun == "Aktif")col-2 @else col-3 @endif"> 
                                 
                                     <label id="identitas2-label" for="identitas2" class="form-label" style="font-weight:600">Foto Identitas</label>
-                                    <img src="{{url($toko->foto_identitas)}}" alt="..." style="height: 20vh; object-fit:cover; max-width:10vw; min-width:10vw; border-radius:5px;">
+                                    <img src="{{url($toko->foto_identitas)}}" alt="..." style="height: 20vh; object-fit:cover; width:15vw; min-width:10vw; border-radius:5px;">
                                     <input id="identitas2" class="mt-2 form-control form-control-sm @error('foto_identitas') is-invalid @enderror" name="foto_identitas" type="file" accept="image/jpeg, image/jpg, image/png" value="{{$toko->foto_identitas}}" required>
                                     <div class="form-text" style="font-size: 13px">
-                                        *Unggah foto anda dengan memegang kartu identitas (maksimal 2MB)
+                                        *Unggah kartu identitas anda dalam format foto KTP/SIM (maksimal 2 MB)
                                     </div>
                                     @error('foto_identitas')
                                     <div class="invalid-feedback">

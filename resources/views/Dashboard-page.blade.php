@@ -61,7 +61,7 @@
                   {{-- <a href="/edit-toko" class="btn btn-lg btn-scn w-75 m-5">Lengkapi Identitas</a> --}}
             </div>
             
-          @else
+          @elseif(auth()->user()->role == "dropshipper")
             <div class="col card-green" style="margin-right: 2rem; font-size:14px;">
               <div class="row">
                 <img src="assets/img/stars.png" alt="" style="position: absolute; margin-left:53rem; width:8rem">
@@ -71,6 +71,19 @@
                   <div class="col-10" style="padding: 0.8rem 0rem;">
                         <div class="cHead" style="font-size:20px">Assalamualaikum, {{ strtok(auth()->user()->dropshipper->nama_lengkap, ' ') }}!</div>
                         <div class="cBody" style="font-size:14px">Anda terdaftar sebagai Dropshipper <br> Sejak <strong> {{ strtok(auth()->user()->dropshipper->created_at, ' ') }}!</strong> </div>
+                  </div>
+              </div>
+            </div>
+          @else
+            <div class="col card-green" style="margin-right: 2rem; font-size:14px;">
+              <div class="row">
+                <img src="assets/img/stars.png" alt="" style="position: absolute; margin-left:53rem; width:8rem">
+                  <div class="col-1" style="padding: 0%; text-align:center">
+                      <a><img src="assets/img/drp2.png" alt="" style="width: 60%"></a>
+                  </div>
+                  <div class="col-10" style="padding: 0.8rem 0rem;">
+                        <div class="cHead" style="font-size:20px">Assalamualaikum, Admin!</div>
+                        <div class="cBody mb-3" style="font-size:14px">Semoga hari anda menyenangkan </div>
                   </div>
               </div>
             </div>
@@ -94,7 +107,7 @@
                   </div>
               </div>
             </a>
-            @else
+            @elseif(auth()->user()->role == "dropshipper")
             <a href="/transaksi/Tanggal" class="col cards cHover" style="margin-right: 2rem; background-color:#E2EDF9; color: #3C4A57; border: solid 0.1ch #3C4B5E">
               <div class="row">
                   <div class="col-9" style="padding: 0.8rem 0rem;">
@@ -112,7 +125,7 @@
               </div>
             </a>
             @endif
-            
+            @if(auth()->user()->role == "dropshipper" or auth()->user()->role == "supplier")
             <a href="/transaksi/Diterima" class="col cards cHover" style="margin-right: 2rem; background-color:#DFECE0; color:#3C4A57; border: solid 0.1ch #3C4B5E">
               <div class="row">
                   <div class="col-9" style="padding: 0.5rem 0rem;">
@@ -161,6 +174,40 @@
                   </div>
               </div>
             </a>
+            @else
+            <a href="/admin-dropshipper" class="col cards cHover" style="margin-right: 2rem; background-color:#DFECE0; color:#3C4A57; border: solid 0.1ch #3C4B5E">
+              <div class="row">
+                  <div class="col-9" style="padding: 0.5rem 0rem;">
+                    <div class="fw-bold" style="font-size: 16px">Total Dropshipper</div>
+                    <div class="fw-normal" style="font-size: 14px">Terdaftar</div>
+                      <div class="row" style="font-weight: 600;">
+                          <div class="col-6 mt-2" style="color: #3C4A57">
+                              <div style="font-size:22px;">{{$totalDropshipper}}</div>
+                          </div>
+                          <div class="col-6 mt-2">
+                            
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            </a>
+            <a href="/admin-supplier" class="col cards cHover" style="margin-right: 2rem; background-color:#FEEDD8; color:#3C4B5E; border: solid 0.1ch #3C4B5E">
+              <div class="row">
+                  <div class="col-9" style="padding: 0.5rem 0rem;">
+                      <div class="fw-bold" style="font-size: 16px">Total Supplier</div>
+                      <div class="fw-normal" style="font-size: 14px">Terdaftar</div>
+                      <div class="row" style="font-weight: 600;">
+                          <div class="col-6 mt-2" style="color: #3C4B5E">
+                              <div style="font-size:22px;">{{$totalSupplier}}</div>
+                          </div>
+                          <div class="col-6 mt-2">
+                            
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            </a>
+            @endif
           </div>
         <div class="row">
           @if(auth()->user()->role == "supplier")

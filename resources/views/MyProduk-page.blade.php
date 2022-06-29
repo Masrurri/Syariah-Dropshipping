@@ -23,10 +23,10 @@
                 </div>
                 
             </div>
-            <div class="row row-cols-sm-4 scrl" style="overflow-y: scroll; max-height:25rem">
+            <div class="row row-cols-sm-4 scrl" style="overflow-y: scroll; max-height:28rem">
                 @foreach ($products as $produk)
                     <div class="col">
-                        <div class="card mb-3" style="height: 23rem; max-width:16rem;">
+                        <div class="card mb-3" style="height: 25rem; max-width:16rem;">
                             <img src="{{url($produk->gambar_utama)}}" class="card-img-top" alt="..." style="object-fit: cover; min-height:28vh; max-height:28vh; ">
                             <div class="card-body">
                                 <h5 class="card-title" style="font-size: 14px; text-overflow:ellipsis; max-height:2rem; overflow-y:hidden;">{{$produk->nama_produk}}</h5>

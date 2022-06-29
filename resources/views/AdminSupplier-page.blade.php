@@ -29,8 +29,9 @@
                   <th scope="col" style="width: 7rem">Nama Toko</th>
                   <th scope="col" style="width: 7rem">Kota</th>
                   <th scope="col" style="width: 14rem">Alamat Lengkap</th>
-                  <th scope="col" style="width: 10rem; text-align: center">Status</th>
                   <th scope="col" style="width: 10rem; text-align: center">Identitas</th>
+                  <th scope="col" style="width: 10rem; text-align: center">Status</th>
+                  
                   <th scope="col" style="width: 10rem; text-align: center">Action</th>
                 </tr>
               </thead>
@@ -41,11 +42,12 @@
                       <td>{{$toko->nama_toko}}</td>
                       <td>{{$toko->kota}}</td>
                       <td>{{$toko->deskripsi}}</td>
-                      <td style="text-align: center" > <button disabled class="@if($toko->status_akun == "Belum Aktif") btnYellow @elseif($toko->status_akun == "Tidak Aktif" or $toko->status_akun == "Ditolak") btnRed @else btnGreen @endif">{{$toko->status_akun}}</button> </td>
                       <td style="text-align: center" >
                         @if($toko->kartu_identitas == "" & $toko->foto_identitas == "") <button disabled class="btnRed">Tidak Lengkap </button> @else  <button disabled class="btnGreen">Lengkap </button> @endif 
                         
                       </td>
+                      <td style="text-align: center" > <button disabled class="@if($toko->status_akun == "Belum Aktif") btnYellow @elseif($toko->status_akun == "Tidak Aktif" or $toko->status_akun == "Ditolak") btnRed @else btnGreen @endif">{{$toko->status_akun}}</button> </td>
+                      
                       <td style="text-align: center" > <a href="/admin-detail-toko/{{$toko->id}}" type="button" class="btn-sm btn-prm">Detail</a> </td>
                     </tr>
                 @endforeach

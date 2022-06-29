@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Transaksi;
 use App\Models\Produk;
+use App\Models\Dropshipper;
+use App\Models\Supplier;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -24,8 +26,10 @@ class DashboardController extends Controller
             $allProduk = count(Produk::where('toko_id', auth()->user()->supplier->toko->id)->get());
             $ditolak = count(Transaksi::where('toko_id', auth()->user()->supplier->toko->id)->where('status_pembayaran', 'Ditolak')->orderByDesc('created_at')->get());
             $on_process = count(Transaksi::where('toko_id', auth()->user()->supplier->toko->id)->where('status_pembayaran', 'Diterima')->orderByDesc('created_at')->get());
-            $not_process = count(Transaksi::where('toko_id', auth()->user()->supplier->toko->id)->where('status_pembayaran', 'Menunggu Konfirmasi')->orWhere('no_resi', 'Ditolak')->orderByDesc('created_at')->get());
-        } else {
+            $not_process = count(Transaksi::where('toko_id', auth()->user()->supplier->toko->id)->whereNull('no_resi')->orderByDesc('created_at')->get());
+            $totalDropshipper = Dropshipper::count();
+            $totalSupplier = Supplier::count();
+        } elseif (auth()->user()->role == "dropshipper") {
             $allSell = "Tidak ada";
             $allSend = count(Transaksi::where('dropshipper_id', auth()->user()->dropshipper->id)->where('no_resi', '!=', '')->get());
             $allTrans = count(Transaksi::where('dropshipper_id', auth()->user()->dropshipper->id)->get());
@@ -34,6 +38,19 @@ class DashboardController extends Controller
             $on_process = count(Transaksi::where('dropshipper_id', auth()->user()->dropshipper->id)->where('status_pembayaran', 'Diterima')->orderByDesc('created_at')->get());
             $not_process = count(Transaksi::where('dropshipper_id', auth()->user()->dropshipper->id)->where('status_pembayaran', '!=', 'Diterima')->where('status_pembayaran', '!=', 'Ditolak')->orderByDesc('created_at')->get());
             $allProduk = "Tidak ada";
+            $totalDropshipper = Dropshipper::count();
+            $totalSupplier = Supplier::count();
+        } else {
+            $allSell = "Tidak ada";
+            $allSend = "Tidak ada";
+            $allTrans = "Tidak ada";
+            $transactions = "Tidak ada";
+            $ditolak = "Tidak ada";
+            $on_process = "Tidak ada";
+            $not_process = "Tidak ada";
+            $allProduk = "Tidak ada";
+            $totalDropshipper = Dropshipper::count();
+            $totalSupplier = Supplier::count();
         }
 
         return view('Dashboard-page', [
@@ -45,7 +62,9 @@ class DashboardController extends Controller
             "allTrans" => $allTrans,
             "allProduk" => $allProduk,
             "allSend" => $allSend,
-            "allSell" => $allSell
+            "allSell" => $allSell,
+            "totalDropshipper" => $totalDropshipper,
+            "totalSupplier" => $totalSupplier
             // "getPrice" => $getPrice
         ]);
     }

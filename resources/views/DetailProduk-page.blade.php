@@ -26,7 +26,8 @@
                         <div class="row justify-content-center">
                             <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="width: 100%">
 
-                                <div class="carousel-inner" style="border-radius:6pt"> 
+                                <div class="carousel-inner" style="border-radius:6pt">
+                                    
                                     @foreach ($assets as $key => $asset)
                                         <div class="carousel-item @if ($loop->first) active @endif">
                                             <img src="{{url($asset->url)}}" class="d-block w-100" alt="...">
@@ -61,7 +62,7 @@
                                         @foreach ($assets as $key => $asset)
                                             <div class="col-4 p-2">
                                                 <a href="{{url($asset->url)}}" target="_blank">
-                                                    <img class="assetGBR" src="{{url($asset->url)}}" alt="..." style="height: 30vh; object-fit:cover; max-width:17vw; min-width:17vw; border-radius:5px;">
+                                                    <img class="assetGBR" src="{{url($asset->url)}}" alt="..." style="height: 30vh; object-fit:cover; max-width:15vw; min-width:15vw; border-radius:5px;">
                                                   </a>  
                                             </div>
                                         @endforeach
@@ -179,7 +180,7 @@
                     srcList.push(images[i].src);
                     var link = document.createElement("a");
                     link.id=i;
-                    link.download = "assets "+i;
+                    link.download = "assets "+i+".png";
                     link.href = images[i].src;
                     link.click();
                     i++;

@@ -162,7 +162,7 @@
                         </div>
                         <div class="col-2">
                             <label id="label-pengiriman-label" for="label-pengiriman" class="form-label ps-2">Label Pengiriman</label>
-                            <button style="width: 6rem" type="button" class="ms-2 btn btn-sm btn-prm" data-bs-toggle="modal" data-bs-target="#labelPengiriman">Lihat</button>
+                            <button style="width: 9rem" type="button" class="ms-2 btn btn-sm btn-prm" data-bs-toggle="modal" data-bs-target="#labelPengiriman">Lihat</button>
                             <!-- Modal -->
                             <div class="modal fade" id="labelPengiriman" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -184,13 +184,13 @@
                         <div class="col-3">
                             <label id="bukti-pembayaran-label" for="bukti-pembayaran" class="form-label ps-2">Bukti Pembayaran</label>
                             @if(auth()->user()->role == "supplier")
-                                <button @if($transaksi->bukti_pembayaran == "") disabled @endif style="width: 6rem; display:inline" type="button" class="ms-2 btn btn-sm btn-prm" data-bs-toggle="modal" data-bs-target="#buktiPembayaran">Lihat</button>
+                                <button @if($transaksi->bukti_pembayaran == "") disabled @endif style="width: 9rem; display:inline" type="button" class="ms-2 btn btn-sm btn-prm" data-bs-toggle="modal" data-bs-target="#buktiPembayaran">Lihat</button>
                             @else
                                 @if ($transaksi->bukti_pembayaran == "")
                                     <input onchange="isChange()" class="ms-2 form-control form-control-sm" id="buktiUpload" @error('bukti_pembayaran') is-invalid @enderror name="bukti_pembayaran" type="file" accept="image/jpeg, image/jpg, image/png" required @if(auth()->user()->role == "admin") disabled @endif>
                                     <div id="labelHelp" class="form-text" style="font-size: 14px">*Ukuran maksimal 2 MB</div>
                                 @else
-                                    <button style="width: 6rem; display:inline" type="button" class="ms-2 btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#buktiPembayaran">Lihat</button>
+                                    <button style="width: 9rem; display:inline" type="button" class="ms-2 btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#buktiPembayaran">Lihat</button>
                                 @endif
                             @endif
                             <!-- Modal -->

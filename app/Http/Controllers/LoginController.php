@@ -23,7 +23,7 @@ class LoginController extends Controller
         if (Auth::attempt($validate)) {
             $request->session()->regenerate();
             if (auth()->user()->role == "admin") {
-                return redirect()->intended('/admin-supplier');
+                return redirect()->intended('/dashboard');
             } elseif (auth()->user()->role == "supplier") {
 
                 if (auth()->user()->supplier->toko->status_akun == "Belum Aktif" or auth()->user()->supplier->toko->status_akun == "Ditolak" or auth()->user()->supplier->toko->status_akun == "Tidak Aktif") {
