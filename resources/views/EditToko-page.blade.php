@@ -24,9 +24,17 @@
                     @method('put')
                     @csrf
                     <div class="row mt-3">
-                        @if($toko->status_akun == "Belum aktif")
+                        @if($toko->status_akun == "Belum Aktif")
                             <div class="col-10 mx-3 alert alert-warning" style="">
                                 Status toko anda saat ini masih <strong>Belum Aktif</strong>, segera lengkapi identitas anda terlebih dahulu agar dapat dikonfirmasi oleh Admin.
+                            </div>
+                        @elseif($toko->status_akun == "Ditolak")
+                            <div class="col-10 mx-3 alert alert-danger" style="">
+                                Status verifikasi identitas anda <strong>Ditolak</strong> oleh admin, segera lengkapi identitas anda sesuai dengan ketentuan agar dapat dikonfirmasi oleh Admin.
+                            </div>
+                        @elseif($toko->status_akun == "Tidak Aktif")
+                            <div class="col-10 mx-3 alert alert-danger" style="">
+                                Status akun anda saat ini sedang <strong>Dinonaktifkan</strong> oleh admin, untuk mengaktifkan kembali silahkan hubungi admin.
                             </div>
                         @endif
                         @if($toko->status_akun != "Aktif")
@@ -36,7 +44,7 @@
                                     <img src="{{url($toko->kartu_identitas)}}" alt="..." style="height: 20vh; object-fit:cover; max-width:10vw; min-width:10vw; border-radius:5px;">
                                     <input id="identitas1" class="mt-2 form-control form-control-sm @error('kartu_identitas') is-invalid @enderror" name="kartu_identitas" type="file" accept="image/jpeg, image/jpg, image/png" value="{{$toko->kartu_identitas}}" required>
                                     <div class="form-text" style="font-size: 13px">
-                                        *Unggah kartu identitas anda dalam format foto KTP/SIM
+                                        *Unggah kartu identitas anda dalam format foto KTP/SIM (maksimal 2 MB)
                                     </div>
                                     @error('kartu_identitas')
                                     <div class="invalid-feedback">
@@ -47,11 +55,11 @@
                             </div>
                             <div class="@if($toko->status_akun == "Aktif")col-2 @else col-3 @endif"> 
                                 
-                                    <label id="identitas2-label" for="identitas2" class="form-label" style="font-weight:600">Foto Identitas @if($toko->foto_identitas) ✔ @endif</label>
+                                    <label id="identitas2-label" for="identitas2" class="form-label" style="font-weight:600">Foto Identitas</label>
                                     <img src="{{url($toko->foto_identitas)}}" alt="..." style="height: 20vh; object-fit:cover; max-width:10vw; min-width:10vw; border-radius:5px;">
                                     <input id="identitas2" class="mt-2 form-control form-control-sm @error('foto_identitas') is-invalid @enderror" name="foto_identitas" type="file" accept="image/jpeg, image/jpg, image/png" value="{{$toko->foto_identitas}}" required>
                                     <div class="form-text" style="font-size: 13px">
-                                        *Unggah foto anda dengan memegang kartu identitas
+                                        *Unggah foto anda dengan memegang kartu identitas (maksimal 2MB)
                                     </div>
                                     @error('foto_identitas')
                                     <div class="invalid-feedback">

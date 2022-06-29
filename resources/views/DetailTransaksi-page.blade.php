@@ -188,6 +188,7 @@
                             @else
                                 @if ($transaksi->bukti_pembayaran == "")
                                     <input onchange="isChange()" class="ms-2 form-control form-control-sm" id="buktiUpload" @error('bukti_pembayaran') is-invalid @enderror name="bukti_pembayaran" type="file" accept="image/jpeg, image/jpg, image/png" required @if(auth()->user()->role == "admin") disabled @endif>
+                                    <div id="labelHelp" class="form-text" style="font-size: 14px">*Ukuran maksimal 2 MB</div>
                                 @else
                                     <button style="width: 6rem; display:inline" type="button" class="ms-2 btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#buktiPembayaran">Lihat</button>
                                 @endif

@@ -40,7 +40,7 @@
                                 <div class="card" style="height: 24rem">
                                     <img src="{{url($produk->gambar_utama)}}" class="card-img-top" alt="..." style="object-fit: cover; min-height:30vh; max-height:30vh ">
                                     <div class="card-body">
-                                        <h5 class="card-title" style="font-size: 14px; text-overflow:ellipsis;">{{$produk->nama_produk}}</h5>
+                                        <h5 class="card-title" style="font-size: 14px; text-overflow:ellipsis; max-height:2rem; overflow-y:hidden;">{{$produk->nama_produk}}</h5>
                                         
                                         <span class="card-text" style="font-size: 16px; font-weight:700">Rp{{$produk->harga}}</span><br>
                                         <span class="card-text m-0" style="font-size: 12px; font-weight:600">Saran Penjualan: Rp{{$produk->saran_harga}}</span><br>

@@ -25,7 +25,7 @@
                     <div class="row">
                         <div class="col">
                             <label id="nama-barang-label" for="nama-barang" class="form-label" style="font-weight:600">Nama Barang</label>
-                            <input maxlength="60" type="text" class="form-control form-control-sm @error('nama_produk') is-invalid @enderror" name="nama_produk" id="nama-barang" value="{{$produk->nama_produk}}" required>
+                            <input maxlength="80" type="text" class="form-control form-control-sm @error('nama_produk') is-invalid @enderror" name="nama_produk" id="nama-barang" value="{{$produk->nama_produk}}" required>
                             @error('nama_produk')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -50,6 +50,7 @@
                         <div class="col-6">
                             <label id="nama-barang-label" for="gambar-utama" class="form-label" style="font-weight:600">Gambar Utama @if($produk->gambar_utama) ✔ @endif</label>
                             <input class="form-control form-control-sm @error('gambar_utama') is-invalid @enderror" name="gambar_utama" id="gbrUpload" type="file">
+                            <div id="labelHelp" class="form-text" style="font-size: 14px">*Ukuran maksimal 2 MB</div>
                             @error('gambar_utama')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -135,14 +136,16 @@
                         <div class="col-12"> 
                             <form action="/assets/{{$produk->id}}" method="post" enctype="multipart/form-data">
                             @csrf 
-                            <div class="input-group mb-3">
+                            <div class="input-group">
                                 <input class="form-control form-control-sm" id="assetUpload" name="asset" accept="image/jpeg, image/jpg, image/png" type="file" required> 
+                                
                                 <div class="input-group-append">
                                     <button href="" type="submit" class="btn btn-sm btn-primary ms-2" style="width:5rem;">Upload</button> 
                                 </div>
+                                
                               </div>
-                                
-                                
+                              <div class="mb-3" id="labelHelp" class="form-text" style="font-size: 14px; color:rgba(102, 102, 102, 0.979)">*Ukuran maksimal 2 MB</div>
+                                    
                             </form>
                         </div>
                     </div>

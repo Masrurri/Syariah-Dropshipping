@@ -12,7 +12,7 @@
                     <div class="row">
                         <div class="col-6">
                             <label id="nama-barang-label" for="nama-barang" class="form-label" style="font-weight:600" >Nama Barang</label>
-                            <input maxlength="60" type="text" class="form-control form-control-sm @error('nama_produk') is-invalid @enderror" name="nama_produk" id="nama-barang" value="" required>
+                            <input maxlength="80" type="text" class="form-control form-control-sm @error('nama_produk') is-invalid @enderror" name="nama_produk" id="nama-barang" value="" required>
                             @error('nama_produk')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -47,6 +47,7 @@
                         <div class="col-3">
                             <label id="nama-barang-label" for="gambar-utama" class="form-label" style="font-weight:600">Gambar Utama</label>
                             <input class="form-control form-control-sm @error('gambar_utama') is-invalid @enderror" name="gambar_utama" id="gbrUpload" type="file" accept="image/jpeg, image/jpg, image/png" required>
+                            <div id="labelHelp" class="form-text" style="font-size: 14px">*Ukuran maksimal 2 MB</div>
                             @error('gambar_utama')
                             <div class="invalid-feedback">
                                 {{ $message }}

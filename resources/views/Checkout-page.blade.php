@@ -68,7 +68,7 @@
                                         <div class="col-9">
                                             <label id="label-pengiriman-label" for="label-pengiriman" class="form-label" style="font-weight:600; font-size: 14px">Label Pengiriman</label>
                                             <input class="form-control form-control-sm @error('label') is-invalid @enderror" name="label" id="label-pengiriman" type="file" accept="image/jpeg, image/jpg, image/png" required>
-                                            <div id="labelHelp" class="form-text" style="font-size: 14px">*Upload label pengiriman dari marketplace</div>
+                                            <div id="labelHelp" class="form-text" style="font-size: 14px">*Upload label pengiriman dari marketplace (maksimal 2 MB)</div>
                                         </div>
                                     </div>
 

@@ -117,7 +117,7 @@
                 </div>
             </div>
             <div class="row mt-2">
-                <div class="col-3">
+                <div class="col-6">
                     <label id="status-akun-label" for="status-akun" class="form-label ps-2" style="font-weight:600">Status Akun</label><br>
                     <div class="form-check form-check-inline ms-2" style="font-weight: 400; color:black">
                         <input class="form-check-input" type="radio" name="status_akun" id="inlineRadio1" @if($toko->status_akun == "Aktif") checked @endif value="Aktif">
@@ -126,6 +126,10 @@
                     <div class="form-check form-check-inline" style="font-weight: 400; color:black">
                         <input class="form-check-input" type="radio" name="status_akun" id="inlineRadio2" @if($toko->status_akun == "Tidak Aktif") checked @endif value="Tidak Aktif">
                         <label class="form-check-label" for="inlineRadio2">Tidak Aktif</label>
+                    </div>
+                    <div class="form-check form-check-inline" style="font-weight: 400; color:black">
+                        <input class="form-check-input" type="radio" name="status_akun" id="inlineRadio3" @if($toko->status_akun == "Ditolak") checked @endif value="Ditolak">
+                        <label class="form-check-label" for="inlineRadio2">Ditolak</label>
                     </div>
                 </div>
                 

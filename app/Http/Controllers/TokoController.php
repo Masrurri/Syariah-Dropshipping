@@ -34,21 +34,27 @@ class TokoController extends Controller
         ]);
 
         if ($toko->kartu_identitas == null & $toko->foto_identitas == null) {
-            $foto_identitas = $request->file('foto_identitas')->store('public/' . auth()->user()->id . '/toko/' . $toko->id . '/foto_identitas');
-            $kartu_identitas = $request->file('kartu_identitas')->store('public/' . auth()->user()->id . '/toko/' . $toko->id . '/kartu_identitas');
-
-            $foto_identitas = str_replace("public/", "/storage/", $foto_identitas);
-            $kartu_identitas = str_replace("public/", "/storage/", $kartu_identitas);
+            // $foto_identitas = $request->file('foto_identitas')->store('public/' . auth()->user()->id . '/toko/' . $toko->id . '/foto_identitas');
+            // $kartu_identitas = $request->file('kartu_identitas')->store('public/' . auth()->user()->id . '/toko/' . $toko->id . '/kartu_identitas');
+            // $foto_identitas = str_replace("public/", "/storage/", $foto_identitas);
+            // $kartu_identitas = str_replace("public/", "/storage/", $kartu_identitas);
+            $filenameFOTO = $request->file('foto_identitas')->getClientOriginalName();
+            $filenameKARTU = $request->file('kartu_identitas')->getClientOriginalName();
+            $foto_identitas = $request->file('foto_identitas')->move('user/supplier/' . auth()->user()->id . '/identitas/foto_identitas', $filenameFOTO);
+            $kartu_identitas = $request->file('kartu_identitas')->move('user/supplier/' . auth()->user()->id . '/identitas/kartu_identitas/', $filenameKARTU);
         } else {
             if ($request->file('kartu_identitas') != null & $request->file('foto_identitas') != null) {
-                Storage::delete($toko->kartu_identitas);
-                Storage::delete($toko->foto_identitas);
+                File::deleteDirectory('user/supplier/' . auth()->user()->id . '/identitas/foto_identitas');
+                File::deleteDirectory('user/supplier/' . auth()->user()->id . '/identitas/kartu_identitas/');
 
-                $foto_identitas = $request->file('foto_identitas')->store('public/' . auth()->user()->id . '/toko/' . $toko->id . '/foto_identitas');
-                $kartu_identitas = $request->file('kartu_identitas')->store('public/' . auth()->user()->id . '/toko/' . $toko->id . '/kartu_identitas');
-
-                $foto_identitas = str_replace("public/", "/storage/", $foto_identitas);
-                $kartu_identitas = str_replace("public/", "/storage/", $kartu_identitas);
+                // $foto_identitas = $request->file('foto_identitas')->store('public/' . auth()->user()->id . '/toko/' . $toko->id . '/foto_identitas');
+                // $kartu_identitas = $request->file('kartu_identitas')->store('public/' . auth()->user()->id . '/toko/' . $toko->id . '/kartu_identitas');
+                // $foto_identitas = str_replace("public/", "/storage/", $foto_identitas);
+                // $kartu_identitas = str_replace("public/", "/storage/", $kartu_identitas);
+                $filenameFOTO = $request->file('foto_identitas')->getClientOriginalName();
+                $filenameKARTU = $request->file('kartu_identitas')->getClientOriginalName();
+                $foto_identitas = $request->file('foto_identitas')->move('user/supplier/' . auth()->user()->id . '/identitas/foto_identitas', $filenameFOTO);
+                $kartu_identitas = $request->file('kartu_identitas')->move('user/supplier/' . auth()->user()->id . '/identitas/kartu_identitas/', $filenameKARTU);
             } else {
                 $foto_identitas = $toko->foto_identitas;
                 $kartu_identitas = $toko->kartu_identitas;

@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Philosopher:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+    <link rel="icon" href="{{ URL::asset('assets/img/favicon.png') }}" type="image/x-icon"/>
     <link href="/assets/css/style.css" rel="stylesheet">
     <link href="/assets/css/landing.css" rel="stylesheet">
     <style>
@@ -140,7 +141,7 @@
         <div class="container hides pt-5">
             <img src="assets/img/star.png" alt="" style="position: absolute; margin-top:2rem">
             <img src="assets/img/star.png" alt="" style="position: absolute; margin-left:50rem; margin-top:-5rem">
-            <h1 class="mb-3" style="text-align:center; font-size: 32px; font-weight:600">Bantu kami untuk menjadi lebih baik</h1>
+            <h1 class="mb-3 mt-5" style="text-align:center; font-size: 32px; font-weight:600">Bantu kami untuk menjadi lebih baik</h1>
             <p class="px-5"style="padding-left:10rem; padding-right:10rem; text-align:center; font-size: 18px; font-weight:400; color:#cae4cd">
                 Syariah Dropshipping menyediakan semua layanan dan pemrograman kepada pengguna melalui dukungan anda secara gratis. Klik tombol di bawah ini apabila anda ingin mendonasikan jumlah berapa pun yang anda inginkan kepada kami. Dukungan anda sangat membantu kami untuk menginkatkan pelayanan dan operasional website.
             </p>

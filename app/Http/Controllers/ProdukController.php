@@ -9,6 +9,7 @@ use App\Models\Transaksi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
 
 class ProdukController extends Controller
 {
@@ -80,8 +81,10 @@ class ProdukController extends Controller
         $produk = Produk::create($data);
 
         if ($produk) {
-            $gambar_utama = $request->file('gambar_utama')->store('public/' . auth()->user()->id . '/produk/' . $produk->id . '/gambar_utama');
-            $gambar_utama = str_replace("public/", "/storage/", $gambar_utama);
+            // $gambar_utama = $request->file('gambar_utama')->store('public/' . auth()->user()->id . '/produk/' . $produk->id . '/gambar_utama');
+            // $gambar_utama = str_replace("public/", "/storage/", $gambar_utama);
+            $filename = $request->file('gambar_utama')->getClientOriginalName();
+            $gambar_utama = $request->file('gambar_utama')->move('user/supplier/' . auth()->user()->id . '/produk/' . $produk->id . '/gambar_utama', $filename);
 
             Produk::where('id', $produk->id)
                 ->update(["gambar_utama" => $gambar_utama]);
@@ -95,6 +98,7 @@ class ProdukController extends Controller
 
     public function delete_produk(Produk $produk)
     {
+        File::deleteDirectory('user/supplier/' . auth()->user()->id . '/produk/' . $produk->id);
         $delete = Produk::destroy($produk->id);
         if ($delete) {
             return redirect('myproduk')->with('success', 'Produk deleted!');
@@ -138,13 +142,17 @@ class ProdukController extends Controller
         ]);
 
         if ($produk->gambar_utama == null) {
-            $gambar_utama = $request->file('gambar_utama')->store('public/' . auth()->user()->id . '/produk/' . $produk->id . '/gambar_utama');
-            $gambar_utama = str_replace("public/", "/storage/", $gambar_utama);
+            //$gambar_utama = $request->file('gambar_utama')->store('public/' . auth()->user()->id . '/produk/' . $produk->id . '/gambar_utama');
+            //$gambar_utama = str_replace("public/", "/storage/", $gambar_utama);
+            $filename = $request->file('gambar_utama')->getClientOriginalName();
+            $gambar_utama = $request->file('gambar_utama')->move('user/supplier/' . auth()->user()->id . '/produk/' . $produk->id . '/gambar_utama', $filename);
         } else {
             if ($request->file('gambar_utama') != null) {
-                Storage::delete($produk->gambar_utama);
-                $gambar_utama = $request->file('gambar_utama')->store('public/' . auth()->user()->id . '/produk/' . $produk->id . '/gambar_utama');
-                $gambar_utama = str_replace("public/", "/storage/", $gambar_utama);
+                $oldImage = $produk->gambar_utama;
+                unlink($oldImage);
+
+                $filename = $request->file('gambar_utama')->getClientOriginalName();
+                $gambar_utama = $request->file('gambar_utama')->move('user/supplier/' . auth()->user()->id . '/produk/' . $produk->id . '/gambar_utama', $filename);
             } else {
                 $gambar_utama = $produk->gambar_utama;
             }
@@ -231,8 +239,10 @@ class ProdukController extends Controller
             Produk::where('id', $transaksi->produk_id)->update([
                 "stok" =>  $getStok - 1,
             ]);
-            $label = $request->file('label')->store('public/' . auth()->user()->id . '/transaksi/' . $transaksi->id . '/label');
-            $label = str_replace("public/", "/storage/", $label);
+            // $label = $request->file('label')->store('public/' . auth()->user()->id . '/transaksi/' . $transaksi->id . '/label');
+            // $label = str_replace("public/", "/storage/", $label);
+            $filename = $request->file('label')->getClientOriginalName();
+            $label = $request->file('label')->move('transaksi/' . $transaksi->id . '/label', $filename);
 
             Transaksi::where('id', $transaksi->id)
                 ->update(["label_pengiriman" => $label]);

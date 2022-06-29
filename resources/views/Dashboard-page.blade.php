@@ -29,7 +29,7 @@
                   <img src="assets/img/stars.png" alt="" style="position: absolute; margin-left:23rem; width:9rem">
               </div>
             </div>
-            <div class="col cards" style="margin-right: 2rem; font-size:14px; background-color:#FFD600">
+            <div class="col cards" style="margin-right: 2rem; font-size:14px; background-color:#FFD600; border: 1px solid #176E23;">
               <img src="assets/img/starr.png" alt="" style="position: absolute; margin-left:24rem; margin-top:3rem; width:5rem">    
               <div class="row">
                       <div class="col-2" style="padding: 0%; text-align:center">

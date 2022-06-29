@@ -61,8 +61,10 @@ class TransaksiController extends Controller
             "bukti_pembayaran" => "required",
         ]);
 
-        $bukti_pembayaran = $request->file('bukti_pembayaran')->store('public/' . auth()->user()->id . '/transaksi/' . $transaksi->id . '/bukti_pembayaran');
-        $bukti_pembayaran = str_replace("public/", "/storage/", $bukti_pembayaran);
+        // $bukti_pembayaran = $request->file('bukti_pembayaran')->store('public/' . auth()->user()->id . '/transaksi/' . $transaksi->id . '/bukti_pembayaran');
+        // $bukti_pembayaran = str_replace("public/", "/storage/", $bukti_pembayaran);
+        $filename = $request->file('bukti_pembayaran')->getClientOriginalName();
+        $bukti_pembayaran = $request->file('bukti_pembayaran')->move('transaksi/' . $transaksi->id . '/bukti_pembayaran', $filename);
 
         $update = Transaksi::where('id', $transaksi->id)
             ->update(["bukti_pembayaran" => $bukti_pembayaran, "status_pembayaran" => "Menunggu Konfirmasi"]);
@@ -88,7 +90,7 @@ class TransaksiController extends Controller
             if ($validate['status_pembayaran'] == "Ditolak") {
                 $getStok = Produk::find($transaksi->produk_id)->stok;
                 Produk::where('id', $transaksi->produk_id)->update([
-                    "stok" =>  $getStok - 1,
+                    "stok" =>  $getStok + 1,
                 ]);
             }
             return redirect('detail-transaksi/' . $transaksi->id)->with('success', 'Transaksi updated!');

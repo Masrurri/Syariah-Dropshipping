@@ -26,7 +26,7 @@ class LoginController extends Controller
                 return redirect()->intended('/admin-supplier');
             } elseif (auth()->user()->role == "supplier") {
 
-                if (auth()->user()->supplier->toko->status_akun == "Belum aktif") {
+                if (auth()->user()->supplier->toko->status_akun == "Belum Aktif" or auth()->user()->supplier->toko->status_akun == "Ditolak" or auth()->user()->supplier->toko->status_akun == "Tidak Aktif") {
                     return redirect('/edit-toko/' . auth()->user()->supplier->toko->id);
                 }
             }

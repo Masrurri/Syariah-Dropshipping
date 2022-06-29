@@ -41,7 +41,7 @@
                       <td>{{$toko->nama_toko}}</td>
                       <td>{{$toko->kota}}</td>
                       <td>{{$toko->deskripsi}}</td>
-                      <td style="text-align: center" > <button disabled class="@if($toko->status_akun == "Belum aktif") btnYellow @elseif($toko->status_akun == "Tidak Aktif") btnRed @else btnGreen @endif">{{$toko->status_akun}}</button> </td>
+                      <td style="text-align: center" > <button disabled class="@if($toko->status_akun == "Belum Aktif") btnYellow @elseif($toko->status_akun == "Tidak Aktif" or $toko->status_akun == "Ditolak") btnRed @else btnGreen @endif">{{$toko->status_akun}}</button> </td>
                       <td style="text-align: center" >
                         @if($toko->kartu_identitas == "" & $toko->foto_identitas == "") <button disabled class="btnRed">Tidak Lengkap </button> @else  <button disabled class="btnGreen">Lengkap </button> @endif 
                         

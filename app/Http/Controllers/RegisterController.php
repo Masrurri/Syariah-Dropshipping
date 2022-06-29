@@ -60,7 +60,7 @@ class RegisterController extends Controller
                 'bank' => '',
                 'kartu_identitas' => '',
                 'foto_identitas' => '',
-                'status_akun' => 'Belum aktif',
+                'status_akun' => 'Belum Aktif',
             ]);
             Supplier::create([
                 'nama_lengkap' => $user->nama_lengkap,
